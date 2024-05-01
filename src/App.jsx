@@ -1,7 +1,7 @@
 
 import './App.css'
-import { Header } from './services/common/Header/Header'
-import { Body } from './services/pages/Body/Body'
+import { Header } from './common/Header/Header'
+import { Body } from './pages/Body/Body'
 
 function App() {
 
