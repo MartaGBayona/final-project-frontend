@@ -6,6 +6,7 @@ import './Login.css'
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux"
 import { decodeToken } from "react-jwt";
+import { CButton } from '../../common/CButton/CButton';
 
 
 export const Login = () => {
@@ -49,22 +50,22 @@ export const Login = () => {
                     throw new Error("Debes rellenar todos los campos");
                 }
             }
-    
+
             const fetched = await LoginUser(user);
-    
+
             if (fetched.token) {
                 const decoded = decodeToken(fetched.token);
                 console.log(fetched)
-    
+
                 const passport = {
                     token: fetched.token,
                     user: decoded,
                 };
-    
+
                 dispatch(login({ credentials: passport }));
-    
+
                 // setMsgError(`Bienvenido de nuevo ${decoded.name}`);
-    
+
                 setTimeout(() => {
                     navigate("/");
                 }, 2000);
@@ -76,19 +77,32 @@ export const Login = () => {
 
     return (
         <div className="loginDesign">
-            <CInput 
+            <div className="leftLoginDesign">
+                <img src="../../../img/Birth of nation.jpg" alt="Birth of nation" />
+            </div>
+            <div className="rightLoginDesign">
+            <div className="titleDesignRegister">
+                Acceso
+            </div>
+            <CInput
                 type="email"
                 name="email"
                 value={user.email || ""}
                 changeEmit={(e) => inputHandler(e)}
             />
-            <CInput 
+            <CInput
                 type="password"
                 name="password"
                 value={user.password || ""}
                 changeEmit={(e) => inputHandler(e)}
             />
-            <button onClick={loginMe}>Login</button>
+            <CButton
+                className={"buttonDesign"}
+                title={"Entrar"}
+                functionEmit={loginMe}
+            />
+            </div>
+
         </div>
     )
 }

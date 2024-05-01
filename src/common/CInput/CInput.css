@@ -1,0 +1,15 @@
+.CInputDesign {
+    height: 3vw;
+    width: 18vw;
+
+    border: 0.1em solid rgb(114, 81, 80);
+    border-radius: 1em;
+    margin: 1.5vw;
+    background-color: rgb(260, 260, 260);
+    color: black;
+    font-size: 1.2vw;
+}
+
+.CInputDesignError {
+    border: 0.2em solid rgb(196, 32, 33);
+}
