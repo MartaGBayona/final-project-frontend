@@ -78,7 +78,6 @@ export const Login = () => {
     return (
         <div className="loginDesign">
             <div className="leftLoginDesign">
-                <img src="../../../img/Birth of nation.jpg" alt="Birth of nation" />
             </div>
             <div className="rightLoginDesign">
             <div className="titleDesignRegister">
