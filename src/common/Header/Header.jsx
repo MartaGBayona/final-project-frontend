@@ -16,6 +16,10 @@ export const Header = () => {
                 path="/register"
                 title="Register"
             />
+                        <Clink 
+                path="/profile"
+                title="Perfil"
+            />
         </div>
     )
 }
