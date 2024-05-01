@@ -4,6 +4,7 @@ import { RegisterUser } from "../../services/apiCalls"
 import { useNavigate } from "react-router-dom"
 import { CInput } from "../../common/CInput/CInput"
 import { CButton } from "../../common/CButton/CButton"
+import { validate } from "../../utils/functions"
 
 export const Register = () => {
     const navigate = useNavigate();
@@ -75,7 +76,7 @@ export const Register = () => {
                         Registrate
                     </div>
                     <CInput
-                        className={`CInputDesign ${userError.nameError ? "inputDesignError" : ""}`}
+                        className={`CInputDesign ${userError.nameError ? "CInputDesignError" : ""}`}
                         type={"text"}
                         placeholder={"nombre"}
                         name={"name"}
@@ -86,7 +87,7 @@ export const Register = () => {
                     }}
                     />
                     <CInput
-                        className={`CInputDesign ${userError.nameError ? "inputDesignError" : ""}`}
+                        className={`CInputDesign ${userError.nameError ? "CInputDesignError" : ""}`}
                         type={"text"}
                         placeholder={"apellido"}
                         name={"surname"}
@@ -97,10 +98,10 @@ export const Register = () => {
                     }}
                     />
                     <CInput
-                        className={`CInputDesign ${userError.nameError ? "inputDesignError" : ""}`}
+                        className={`CInputDesign ${userError.nameError ? "CInputDesignError" : ""}`}
                         type={"text"}
                         placeholder={"apellido"}
-                        name={"ssecondSurname"}
+                        name={"secondSurname"}
                         value={user.secondSurname || ""}
                         changeEmit={(e) => {
                         inputHandler(e);
@@ -108,7 +109,7 @@ export const Register = () => {
                     }}
                     />
                     <CInput
-                        className={`CInputDesign ${userError.nameError ? "inputDesignError" : ""}`}
+                        className={`CInputDesign ${userError.nameError ? "CInputDesignError" : ""}`}
                         type={"date"}
                         placeholder={"Fecha de nacimiento"}
                         name={"birth"}
@@ -120,7 +121,7 @@ export const Register = () => {
                     />
                     <div className="error">{userError.nameError}</div>
                     <CInput
-                        className={`CInputDesign ${userError.emailError ? "inputDesignError" : ""}`}
+                        className={`CInputDesign ${userError.emailError ? "CInputDesignError" : ""}`}
                         type={"email"}
                         placeholder={"email"}
                         name={"email"}
@@ -132,7 +133,7 @@ export const Register = () => {
                     />
                     <div className="error">{userError.emailError}</div>
                     <CInput
-                        className={`CInputDesign ${userError.passwordError ? "inputDesignError" : ""}`}
+                        className={`CInputDesign ${userError.passwordError ? "CInputDesignError" : ""}`}
                         type={"password"}
                         placeholder={"contraseña"}
                         name={"password"}
