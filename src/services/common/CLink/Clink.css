@@ -1,0 +1,17 @@
+.cLinkDesign {
+    color: white;
+    font-weight: bold;
+    font-size: 1.2vw;
+
+    margin: 0.5em;
+
+    transition: 0.2s;
+
+    font-family: "Almendra", serif;
+}
+
+.cLinkDesign:hover {
+    cursor: pointer;
+    transition: 0.2s;
+    color: rgba(169, 147, 146);
+}
