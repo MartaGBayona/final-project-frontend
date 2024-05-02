@@ -75,6 +75,7 @@ export const Register = () => {
                 <div className="titleDesignRegister">
                         Registrate
                     </div>
+                    <div className='titleInputDesign'>Nombre</div>
                     <CInput
                         className={`CInputDesign ${userError.nameError ? "CInputDesignError" : ""}`}
                         type={"text"}
@@ -86,6 +87,7 @@ export const Register = () => {
                         checkError(e);
                     }}
                     />
+                    <div className='titleInputDesign'>Primer Apellido</div>
                     <CInput
                         className={`CInputDesign ${userError.nameError ? "CInputDesignError" : ""}`}
                         type={"text"}
@@ -97,6 +99,7 @@ export const Register = () => {
                         checkError(e);
                     }}
                     />
+                    <div className='titleInputDesign'>Segundo Apellido</div>
                     <CInput
                         className={`CInputDesign ${userError.nameError ? "CInputDesignError" : ""}`}
                         type={"text"}
@@ -108,6 +111,7 @@ export const Register = () => {
                         checkError(e);
                     }}
                     />
+                    <div className='titleInputDesign'>Fecha de nacimiento</div>
                     <CInput
                         className={`CInputDesign ${userError.nameError ? "CInputDesignError" : ""}`}
                         type={"date"}
@@ -120,6 +124,7 @@ export const Register = () => {
                     }}
                     />
                     <div className="error">{userError.nameError}</div>
+                    <div className='titleInputDesign'>Correo</div>
                     <CInput
                         className={`CInputDesign ${userError.emailError ? "CInputDesignError" : ""}`}
                         type={"email"}
@@ -132,6 +137,7 @@ export const Register = () => {
                     }}
                     />
                     <div className="error">{userError.emailError}</div>
+                    <div className='titleInputDesign'>Contraseña</div>
                     <CInput
                         className={`CInputDesign ${userError.passwordError ? "CInputDesignError" : ""}`}
                         type={"password"}

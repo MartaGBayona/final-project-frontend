@@ -2,11 +2,12 @@
     height: 2.5vw;
     width: 18vw;
 
-    background-color: rgb(114, 81, 80);
+    background-color: rgb(169, 147, 146);
+    box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.5);
     color: white;
     font-weight: bold;
-    border: 0.1em solid rgb(118, 81, 80);
-    border-radius: 1em;
+    border: 0.1em solid white;
+    border-radius: 0.6em;
     font-size: 1.3vw;
     display: flex;
     justify-content: center;
@@ -17,12 +18,13 @@
 }
 
 .cButtonDesign:hover {
-
+    background-color: rgb(100, 64, 62);
     cursor: pointer;
     transition: 0.2s;
     cursor: pointer;
     transition: 0.2s;
     color: white;
-    border: 0.1em solid rgb(100, 60, 60);
-    background-color: rgb(100, 64, 62);
+    border: 0.1em solid white;
+    box-shadow: none;
+
 }

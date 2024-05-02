@@ -84,12 +84,14 @@ export const Login = () => {
             <div className="titleDesignRegister">
                 Acceso
             </div>
+            <div className='titleInputDesign'>Correo:</div>
             <CInput
                 type="email"
                 name="email"
                 value={user.email || ""}
                 changeEmit={(e) => inputHandler(e)}
             />
+            <div className='titleInputDesign'>Contraseña:</div>
             <CInput
                 type="password"
                 name="password"

@@ -1,15 +1,23 @@
 .CInputDesign {
-    height: 2.5vw;
+    height: 1vw;
     width: 18vw;
 
-    border: 0.1em solid rgb(114, 81, 80);
-    border-radius: 1em;
-    margin: 1vw;
-    background-color: rgb(260, 260, 260);
+    border-bottom: 0.1em solid white;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+
+    margin: 0.5vw;
+    background-color: rgb(169, 147, 146);
     color: black;
-    font-size: 1.2vw;
+    font-size: 1vw;
+    outline: none;
 }
 
 .CInputDesignError {
     border: 0.2em solid rgb(196, 32, 33);
+}
+
+.CInputDesign:focus {
+    border-bottom: 0.1em solid white;
 }

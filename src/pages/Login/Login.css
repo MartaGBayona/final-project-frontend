@@ -42,3 +42,13 @@
     justify-content: center;
     align-items: center;
 }
+
+.titleInputDesign {
+    font-size: 1vw;
+    text-align: left;
+    color: rgb(74, 65, 66);
+    font-family: "Almendra", serif;
+    align-self: flex-start;
+    padding-left: 6em;
+    padding-top: 1em;
+}
