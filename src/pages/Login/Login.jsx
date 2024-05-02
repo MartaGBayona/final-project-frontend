@@ -5,7 +5,6 @@ import { login } from "../../app/slices/userSlice";
 import './Login.css'
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux"
-import { decodeToken } from "react-jwt";
 import { CButton } from '../../common/CButton/CButton';
 
 
@@ -54,24 +53,26 @@ export const Login = () => {
             const fetched = await LoginUser(user);
 
             if (fetched.token) {
-                const decoded = decodeToken(fetched.token);
-                console.log(fetched)
+                const userData = {
+                    id: fetched.user.id,
+                    role: fetched.user.role_id,
+                    name: fetched.user.name,
+                    email: fetched.user.email
+                };
 
                 const passport = {
                     token: fetched.token,
-                    user: decoded,
+                    user: userData,
                 };
 
                 dispatch(login({ credentials: passport }));
-
-                // setMsgError(`Bienvenido de nuevo ${decoded.name}`);
 
                 setTimeout(() => {
                     navigate("/");
                 }, 2000);
             }
         } catch (error) {
-            // setMsgError(error.message);
+            console.error(error);
         }
     };
 

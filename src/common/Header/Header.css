@@ -25,3 +25,8 @@
     transition: 0.3s;
 
 }
+
+.navigatorDesign {
+    display: flex;
+    flex-direction: row;
+}
