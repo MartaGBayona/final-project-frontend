@@ -1,13 +1,78 @@
 .homeDesign {
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;  
-
-    background-color: antiquewhite;
+    padding-top: 2vw;
+    background-color: white;
     color: black;
 
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+.titleHomeDesign {
+    background-image: url(../../../img/gorgoneyeHome.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.textTitleHomeDesign {
+    padding-top: 0.9em;
+    padding-bottom: 0.86em;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+    font-family: "Pirata One", system-ui;
+    color: white;
+    font-size: 10vw;
+    text-align: center;
+}
+
+.subtitleHomeDesign {
+    padding-top: 0.9em;
+    padding-bottom: 0.86em;
+    padding-left: 2em;
+    padding-right: 2em;
+    font-family: "Pirata One", system-ui;
+    color: rgb(100, 64, 62);
+    font-size: 2vw;
+    text-align: justify;
+}
+
+.section {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 3em;
+    padding-bottom: 0.9em;
+    justify-content: center;
+    align-items: center;
+}
+
+.descriptionImage {
+    margin-top: 0.5em;
+    margin-left: 3em;
+    margin-right: 3em;
+    width: 100%;
+    height: auto; 
+}
+
+.descriptionDesign {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 15em;
+    font-size: 1.1em;
+    margin-top: 1em;
+    margin-left: 3em;
+    margin-right: 3em;
+    display: flex;
+    font-family: "Roboto", sans-serif;
+    border: 0.1em solid rgb(74, 65, 66);
+    background-color: rgb(169, 147, 146);
+    padding: 2em; 
+    border-radius: 1.5em;
 
 }

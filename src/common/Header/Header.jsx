@@ -31,6 +31,7 @@ export const Header = () => {
                 </div>
             ) : (
                 <div className="navigatorDesign">
+                    <Clink path="/services" title="Formación" />
                     <Clink path="/login" title="Acceso" />
                     <Clink path="/register" title="Registro" />
                 </div>
