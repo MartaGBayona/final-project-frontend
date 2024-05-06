@@ -1,9 +1,38 @@
 .courseCardDesign {
-    background-color: antiquewhite;
     font-family: "Roboto", sans-serif;
-    color:black;
+    width: 100vw;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-bottom: 6em;
+    flex-wrap: wrap;
+    background-color: white;
+}
+
+.inputCardDesign {
+    display: flex;
+    min-width: 85vw;
+    height: auto;
+    font-size: 2em;
+    font-family: "Roboto", sans-serif;
+    background-color: white;
+    color:black;
+    font-weight: bold;
+    border: none;
+    padding-left: 2.5em;
+    margin-bottom: 1em;
+    margin-right: 2.5em;
+}
+
+.textareaCardDesign {
+    display: flex;
+    font-family: "Roboto", sans-serif;
+    background-color: white;
+    color:black;
+    width: 85vw;
+    font-size: 1.2em;
+    min-height: 12em;
+    border: none;
 }

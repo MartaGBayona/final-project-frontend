@@ -7,6 +7,7 @@
 
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }
@@ -14,7 +15,7 @@
 .titleDesignRegister {
     font-family: "Pirata One", system-ui;
     font-weight: bold;
-    font-size: 3vw;
+    font-size: 3em;
     color: rgb(74, 65, 66);
 }
 

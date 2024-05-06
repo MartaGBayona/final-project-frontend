@@ -1,12 +1,23 @@
 .courseDesign {
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
-
     background-color: white;
     color: black;
-
+    margin-top: 1em;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
+.subtitleCourseDesign {
+    padding-top: 0.9em;
+    padding-bottom: 0.86em;
+    padding-left: 2em;
+    padding-right: 2em;
+    font-family: "Pirata One", system-ui;
+    color: rgb(100, 64, 62);
+    font-size: 4em;
+    text-align: justify;
+}
+
