@@ -1,0 +1,12 @@
+.courseDesign {
+    height: 100vh;
+    width: 100vw;
+
+    background-color: white;
+    color: black;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

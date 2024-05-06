@@ -1,4 +1,9 @@
 .courseCardDesign {
     background-color: antiquewhite;
-    color:black
+    font-family: "Roboto", sans-serif;
+    color:black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

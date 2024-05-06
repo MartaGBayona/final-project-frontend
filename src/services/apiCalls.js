@@ -92,9 +92,27 @@ export const UpdateProfile = async (credentials, data) => {
         if(!responseData.success) {
             throw new Error(data.message)
         }
-
         return responseData;
     } catch (error) {
         return error;
     }
 };
+
+export const getCourse = async () => {
+    const options = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    };
+
+    try {
+        const response = await fetch(`${root}courses`, options)
+        const data = await response.json();
+        console.log("soy la respuesta a los cursos", response)
+        console.log("soy los cursos", data)
+        return data
+    } catch (error) {
+        return error;
+    }
+}
