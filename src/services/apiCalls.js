@@ -73,3 +73,28 @@ export const GetProfile = async (credentials) => {
         throw error;
     }
 }
+
+export const UpdateProfile = async (credentials, data) => {
+    const options = {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${credentials.token}`
+        },
+        body: JSON.stringify(data)
+    };
+
+    try {
+        const response = await fetch(`${root}users/${credentials.user.id}`, options);
+        console.log("soy la data de update",data)
+        const responseData = await response.json();
+
+        if(!responseData.success) {
+            throw new Error(data.message)
+        }
+
+        return responseData;
+    } catch (error) {
+        return error;
+    }
+};
