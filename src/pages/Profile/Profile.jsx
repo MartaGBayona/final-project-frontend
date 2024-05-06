@@ -27,6 +27,7 @@ export const Profile = () => {
         email: "",
     });
 
+
     const [userError, setUserError] = useState({
         nameError: "",
         surnameError: "",
@@ -38,15 +39,17 @@ export const Profile = () => {
     const getUserProfile = async (credentials) => {
         try {
             const fetched = await GetProfile(credentials);
+            console.log("Datos del usuario:", fetched.data);
+            console.log("soy las credenciales",credentials.user.name)
             if (!fetched.success) {
                 throw new Error(fetched.message || 'Error en la respuesta del servidor');
             }
             setUser({
-                name: fetched.user.name,
-                surname: fetched.user.surname,
-                secondSurname: fetched.user.secondSurname,
-                birth: fetched.user.birth,
-                email: fetched.user.email
+                name: fetched.data.name,
+                surname: fetched.data.surname,
+                secondSurname: fetched.data.secondSurname,
+                birth: fetched.data.birth,
+                email: fetched.data.email
             });
             setLoadedData(true);
         } catch (error) {

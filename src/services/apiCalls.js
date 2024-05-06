@@ -58,18 +58,14 @@ export const GetProfile = async (credentials) => {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${credentials.user}`
+            "Authorization": `Bearer ${credentials.token}`
         },
     };
-    console.log("soy credentials", credentials.user)
     try {
         const response = await fetch(`${root}users/profile`, options);
-        console.log("Respuesta completa:", response);
         const data = await response.json();
-        console.log("Soy la data del perfil", data)
-        
-
-
+        console.log("credenciales de la apicall",credentials)
+        console.log("data de la apicall", data)
         return data;
         
     } catch (error) {
