@@ -52,3 +52,28 @@ export const RegisterUser = async (user) => {
         return error;
     }
 };
+
+export const GetProfile = async (credentials) => {
+    const options = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${credentials.user}`
+        },
+    };
+    console.log("soy credentials", credentials.user)
+    try {
+        const response = await fetch(`${root}users/profile`, options);
+        console.log("Respuesta completa:", response);
+        const data = await response.json();
+        console.log("Soy la data del perfil", data)
+        
+
+
+        return data;
+        
+    } catch (error) {
+        console.error("Error al obtener el perfil", error);
+        throw error;
+    }
+}

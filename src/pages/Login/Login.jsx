@@ -57,6 +57,9 @@ export const Login = () => {
                     id: fetched.user.id,
                     role: fetched.user.role_id,
                     name: fetched.user.name,
+                    surname: fetched.user.surname,
+                    secondSurname: fetched.user.secondSurname,
+                    birth: fetched.user.birth,
                     email: fetched.user.email
                 };
 

@@ -2,11 +2,11 @@
     height: 100vh;
     width: 100vw;
 
-    background-color: rgba(210, 209, 209, 0.852);
+    background-color: white;
     color: black;
 
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
