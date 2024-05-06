@@ -14,6 +14,7 @@ export const Profile = () => {
     const navigate = useNavigate();
     //const dispatch = useDispatch();
     const rdxUser = useSelector(userData);
+    
     console.log("soy redux", rdxUser)
 
     //const [write, setWrite] = useState("disabled");

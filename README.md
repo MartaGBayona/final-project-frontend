@@ -16,8 +16,6 @@
 
 ## Description :classical_building:
 
-
-
 ---
 
 ## Stack :gear:
@@ -46,15 +44,15 @@ npm run dev
 
 ### 2 - Info to log
 
-- Super_admin:
+- Director:
 
 ```json
 
   _id: 1,
-  name: "SuperAdmin",
-  email: "superadmin@superadmin.com",
-  password: "admin1234",
-  role: "super_admin"
+  name: "Director",
+  email: "directorn@director.com",
+  password: "123456",
+  role: "director"
 
 ```
 
