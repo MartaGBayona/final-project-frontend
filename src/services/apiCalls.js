@@ -145,3 +145,31 @@ export const UpdateCourse = async (credentials, data, courseId) => {
         return error;
     }
 };
+
+export const CreateCourse = async (credentials, data) => {
+    const options = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${credentials.token}`
+        },
+        body: JSON.stringify(data)
+    };
+
+    try {
+        const response = await fetch(`${root}courses`, options);
+        console.log("soy la respuesta curso creado", response)
+        const responseData = await response.json();
+        console.log('Data enviada en la solicitud POST:', data);
+
+        if (!responseData.success) {
+            throw new Error(responseData.message);
+        }
+
+        return responseData;
+    } catch (error) {
+        return { success: false, message: error.message };
+    }
+}
+
+
