@@ -1,6 +1,6 @@
 .courseCardDesign {
     font-family: "Roboto", sans-serif;
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -13,9 +13,9 @@
 
 .inputCardDesign {
     display: flex;
-    min-width: 85vw;
-    height: auto;
-    font-size: 2em;
+    width: 90vw;
+    height: 7vh;
+    font-size: 2.4vw;
     font-family: "Roboto", sans-serif;
     background-color: white;
     color:black;
@@ -31,8 +31,9 @@
     font-family: "Roboto", sans-serif;
     background-color: white;
     color:black;
-    width: 85vw;
-    font-size: 1.2em;
-    min-height: 12em;
+    width: 90vw;
+    height: 22em;
+    font-size: 2vw;
     border: none;
+    resize: none;
 }

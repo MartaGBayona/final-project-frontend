@@ -6,12 +6,10 @@
     margin-top: 1em;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 .subtitleCourseDesign {
-    padding-top: 0.9em;
+    padding-top: 1.5em;
     padding-bottom: 0.86em;
     padding-left: 2em;
     padding-right: 2em;
@@ -19,5 +17,9 @@
     color: rgb(100, 64, 62);
     font-size: 4em;
     text-align: justify;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
 }
 

@@ -8,7 +8,6 @@ export const CourseCard = ({ title, description, handleInputChange, handleSubmit
         </button>
     ) : null;
 
-    // Determina si los campos deben estar deshabilitados
     const isDisabled = !isDirector;
 
     return (
