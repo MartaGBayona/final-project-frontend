@@ -6,13 +6,13 @@
     margin-top: 3em;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .subtitleCourseDesign {
     padding-top: 1.5em;
     padding-bottom: 0.86em;
-    padding-left: 2em;
-    padding-right: 2em;
     font-family: "Pirata One", system-ui;
     color: rgb(100, 64, 62);
     font-size: 4em;
@@ -21,5 +21,5 @@
     flex-direction: column;
     justify-content: center;
     align-items: center; 
+    text-align: center;
 }
-

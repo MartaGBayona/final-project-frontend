@@ -1,3 +1,4 @@
+import "./Courses.css"
 import { useSelector } from "react-redux";
 import { userData } from "../../app/slices/userSlice";
 import { useState, useEffect } from "react";
@@ -73,7 +74,7 @@ export const Courses = () => {
     return (
         <div className="courseDesign">
             <div className="subtitleCourseDesign">Nuestros cursos</div>
-            <div className="cardRoster">
+            <div>
                 {courses.length > 0 ? (
                     <div>
                         {courses.map((course, index) => (
