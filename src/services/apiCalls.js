@@ -172,4 +172,24 @@ export const CreateCourse = async (credentials, data) => {
     }
 }
 
+export const DeleteCourse = async (credentials, courseId) => {
+    const options = {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${credentials}`
+        },
+    };
+
+    try {
+        const response = await fetch(`${root}courses/${courseId}`, options);
+        const responseData = await response.json();
+
+        return responseData;
+    } catch (error) {
+        console.error("Error en la solicitud DELETE:", error);
+        throw error; 
+    }
+};
+
 

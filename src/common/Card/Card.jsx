@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Card.css";
 
-export const CourseCard = ({ title, description, handleUpdate, userRoleId }) => {
+export const CourseCard = ({ title, description, handleUpdate, handleDelete, userRoleId }) => {
     const [newTitle, setNewTitle] = useState(title);
     const [newDescription, setNewDescription] = useState(description);
 
@@ -16,6 +16,10 @@ export const CourseCard = ({ title, description, handleUpdate, userRoleId }) => 
     const handleUpdateClick = () => {
         handleUpdate({ title: newTitle, description: newDescription });
     };
+
+    const handleDeleteClick = () => {
+        handleDelete();
+    }
 
     return (
         <div className="courseCardDesign">
@@ -39,7 +43,11 @@ export const CourseCard = ({ title, description, handleUpdate, userRoleId }) => 
                     <button className="cButtonDesign" onClick={handleUpdateClick}>
                         Modificar datos
                     </button>
+                    <button className="cButtonDesign" onClick={handleDeleteClick}>
+                        Borrar
+                    </button>
                 </>
+                
             )}
         </div>
     );

@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { userData } from "../../app/slices/userSlice";
 import { useState, useEffect } from "react";
 import { CourseCard } from "../../common/Card/Card";
-import { getCourse, UpdateCourse, CreateCourse } from "../../services/apiCalls";
+import { getCourse, UpdateCourse, CreateCourse, DeleteCourse } from "../../services/apiCalls";
 
 export const Courses = () => {
     const rdxUser = useSelector(userData);
@@ -16,6 +16,7 @@ export const Courses = () => {
         title: "",
         description: ""
     });
+    const [loading, setLoading] = useState(false);
 
     const fetchCourses = async () => {
         try {
@@ -57,9 +58,7 @@ export const Courses = () => {
             setIsCreating(true);
             const response = await CreateCourse(rdxUser.credentials, courseData);
             if (response.success) {
-                // Actualizar la lista de cursos después de crear uno nuevo
                 fetchCourses();
-                // Limpiar el formulario
                 setCourseData({ title: "", description: "" });
                 setIsCreating(false);
             } else {
@@ -81,6 +80,26 @@ export const Courses = () => {
             return course;
         });
         setCourses(updatedCourses);
+    };
+
+    const deleteCourseHandler = async (courseId) => {
+        setLoading(true);
+    
+        try {
+            const result = await DeleteCourse(rdxUser.credentials.token, courseId);
+    
+            if (result && result.success) {
+                const updatedCourses = courses.filter(course => course.id !== courseId);
+                setCourses(updatedCourses);
+            } else {
+                setErrorMessage(result.message || 'Error deleting course');
+            }
+    
+            setLoading(false);
+        } catch (error) {
+            setErrorMessage("Error deleting course");
+            setLoading(false);
+        }
     };
 
     const handleDescriptionChange = (courseId, newDescription) => {
@@ -111,6 +130,7 @@ export const Courses = () => {
                                 title={course.title}
                                 description={course.description}
                                 handleUpdate={(newData) => handleCourseUpdate(course.id, newData)}
+                                handleDelete={() => deleteCourseHandler(course.id)}
                                 userRoleId={roleId === 1 ? roleId : null}
                             />
                         ))}
