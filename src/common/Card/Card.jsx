@@ -1,14 +1,13 @@
 import "./Card.css";
 
-export const CourseCard = ({ title, description, handleInputChange, handleSubmit, userRoleId }) => {
-    const isDirector = userRoleId === 1;
-    const buttonUpdateCourse = isDirector ? (
-        <button className="cButtonDesign" onClick={handleSubmit}>
-            Modificar datos
-        </button>
-    ) : null;
+export const CourseCard = ({ courseId, title, description, handleUpdate, handleTitleChange, handleDescriptionChange, userRoleId }) => {
+    const handleTitleInputChange = (e) => {
+        handleTitleChange(courseId, e.target.value);
+    };
 
-    const isDisabled = !isDirector;
+    const handleDescriptionInputChange = (e) => {
+        handleDescriptionChange(courseId, e.target.value);
+    };
 
     return (
         <div className="courseCardDesign">
@@ -17,17 +16,26 @@ export const CourseCard = ({ title, description, handleInputChange, handleSubmit
                 type="text"
                 placeholder="Título"
                 value={title}
-                onChange={(e) => handleInputChange("title", e.target.value)}
-                disabled={isDisabled}
+                onChange={handleTitleInputChange}
+                disabled={userRoleId !== 1}
             />
             <textarea
                 className="textareaCardDesign"
                 placeholder="Descripción"
                 value={description}
-                onChange={(e) => handleInputChange("description", e.target.value)}
-                disabled={isDisabled}
+                onChange={handleDescriptionInputChange}
+                disabled={userRoleId !== 1}
             />
-            {buttonUpdateCourse}
+            {userRoleId === 1 && (
+                <>
+                    <button className="cButtonDesign" onClick={() => handleUpdate({ title, description })}>
+                        Modificar datos
+                    </button>
+                </>
+            )}
         </div>
     );
-}
+};
+
+
+

@@ -116,3 +116,33 @@ export const getCourse = async () => {
         return error;
     }
 }
+
+
+export const UpdateCourse = async (credentials, data, courseId) => {
+    console.log('credentials:', credentials);
+    console.log('Data antes de serializar:', data);
+    console.log('id:', courseId);
+    const options = {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${credentials.token}`
+        },
+        body: JSON.stringify(data)
+    };
+    console.log(JSON.stringify(data))
+    console.log("Datos enviados en la solicitud PUT:", data)
+
+    try {
+        const response = await fetch(`${root}courses/${courseId}`, options);
+        console.log("soy la data de updateCourse", data);
+        const responseData = await response.json();
+
+        if(!responseData.success) {
+            throw new Error(responseData.message);
+        }
+        return responseData;
+    } catch (error) {
+        return error;
+    }
+};

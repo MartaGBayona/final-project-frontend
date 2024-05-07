@@ -11,6 +11,7 @@ import { CInput } from '../../common/CInput/CInput';
 import { CButton } from '../../common/CButton/CButton';
 
 
+
 export const Profile = () => {
 
     const navigate = useNavigate();
@@ -21,6 +22,7 @@ export const Profile = () => {
 
     const [write, setWrite] = useState("disabled");
     const [loadedData, setLoadedData] = useState();
+    
     const [user, setUser] = useState({
         name: "",
         surname: "",
@@ -42,6 +44,7 @@ export const Profile = () => {
             const fetched = await GetProfile(credentials);
             console.log("Datos del usuario:", fetched.data);
             console.log("soy las credenciales", credentials.user.name)
+            console.log(rdxUser.credentials.user.role)
             if (!fetched.success) {
                 throw new Error(fetched.message || 'Error en la respuesta del servidor');
             }
@@ -69,6 +72,7 @@ export const Profile = () => {
         if (!loadedData) {
             getUserProfile(rdxUser.credentials);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [rdxUser.credentials, loadedData]);
 
     const inputHandler = (e) => {

@@ -12,7 +12,7 @@ export const Header = () => {
     return (
         <div className="headerDesign">
             <Clink path="/" title="Home" />
-            <Clink path="/services" title="Formación" />
+            <Clink path="/courses" title="Formación" />
             {rdxUser?.credentials?.token ? (
                 <div className="navigatorDesign">
                     <Clink path="/profile" title={rdxUser?.credentials?.user?.name} />
