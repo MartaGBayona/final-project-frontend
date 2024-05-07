@@ -26,14 +26,12 @@ export const Courses = () => {
     
                 // Actualizar solo si la actualización fue exitosa
                 if (updatedCourse.success) {
-                    setCourses(prevCourses => {
-                        return prevCourses.map(course => {
-                            if (course.id === courseId) {
-                                return { ...course, ...newData };
-                            }
-                            return course;
-                        });
-                    });
+                    // Obtener los cursos actualizados desde la API después de la actualización
+                    const updatedCoursesData = await getCourse();
+    
+                    // Actualizar el estado de los cursos con los datos actualizados de la API
+                    setCourses(updatedCoursesData.data);
+                    
                     console.log('Curso actualizado:', updatedCourse);
                 } else {
                     console.error('Error al actualizar el curso:', updatedCourse.message);

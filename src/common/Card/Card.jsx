@@ -1,12 +1,20 @@
+import { useState } from "react";
 import "./Card.css";
 
-export const CourseCard = ({ courseId, title, description, handleUpdate, handleTitleChange, handleDescriptionChange, userRoleId }) => {
+export const CourseCard = ({ title, description, handleUpdate, userRoleId }) => {
+    const [newTitle, setNewTitle] = useState(title);
+    const [newDescription, setNewDescription] = useState(description);
+
     const handleTitleInputChange = (e) => {
-        handleTitleChange(courseId, e.target.value);
+        setNewTitle(e.target.value);
     };
 
     const handleDescriptionInputChange = (e) => {
-        handleDescriptionChange(courseId, e.target.value);
+        setNewDescription(e.target.value);
+    };
+
+    const handleUpdateClick = () => {
+        handleUpdate({ title: newTitle, description: newDescription });
     };
 
     return (
@@ -15,20 +23,20 @@ export const CourseCard = ({ courseId, title, description, handleUpdate, handleT
                 className="inputCardDesign"
                 type="text"
                 placeholder="Título"
-                value={title}
+                value={newTitle}
                 onChange={handleTitleInputChange}
                 disabled={userRoleId !== 1}
             />
             <textarea
                 className="textareaCardDesign"
                 placeholder="Descripción"
-                value={description}
+                value={newDescription}
                 onChange={handleDescriptionInputChange}
                 disabled={userRoleId !== 1}
             />
             {userRoleId === 1 && (
                 <>
-                    <button className="cButtonDesign" onClick={() => handleUpdate({ title, description })}>
+                    <button className="cButtonDesign" onClick={handleUpdateClick}>
                         Modificar datos
                     </button>
                 </>
@@ -36,6 +44,3 @@ export const CourseCard = ({ courseId, title, description, handleUpdate, handleT
         </div>
     );
 };
-
-
-

@@ -119,9 +119,8 @@ export const getCourse = async () => {
 
 
 export const UpdateCourse = async (credentials, data, courseId) => {
-    console.log('credentials:', credentials);
-    console.log('Data antes de serializar:', data);
-    console.log('id:', courseId);
+    console.log('Data enviada en la solicitud PUT:', data);
+    console.log('ID del curso:', courseId);
     const options = {
         method: "PUT",
         headers: {
