@@ -98,12 +98,12 @@ export const UpdateProfile = async (credentials, data) => {
     }
 };
 
-export const GetAllUsers = async (token) => {
+export const GetAllUsers = async (credentials) => {
     const options = {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
+            "Authorization": `Bearer ${credentials}`
         },
     };
 
@@ -116,6 +116,7 @@ export const GetAllUsers = async (token) => {
         }
 
         const servicesData = data.data;
+        console.log("soy los usuarios", data)
         return servicesData;
     } catch (error) {
         throw new Error(error);
