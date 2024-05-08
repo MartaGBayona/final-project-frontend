@@ -55,20 +55,20 @@ export const CourseCard = ({ title, description, handleUpdate, handleDelete, use
 
 
 export const UserAdminCard = ({ name, surname, secondSurname, birth, email, role, isDeletable, onDelete }) => {
-    console.log("soy el roleid", role)
     return (
         <div className="userCard">
             <div className="userData">
-                <div className="userName">Nombre: {name}</div>
-                <div className="userName">Primer Apellido: {surname}</div>
-                <div className="userName">Segundo Apellido: {secondSurname}</div>
-                <div className="userName">Fecha de Nacimiento: {birth}</div>
-                <div className="userEmail">Correo: {email}</div>
-                <div className="userRole">Rol: {role}</div>
-
+                <div>Nombre: {name}</div>
+                <div>Primer Apellido: {surname}</div>
+                <div>Segundo Apellido: {secondSurname}</div>
+                <div>Fecha de Nacimiento: {birth}</div>
+                <div>Correo: {email}</div>
+                <div>Rol: {role}</div>
             </div>
             {isDeletable && (
-                <button className="buttonDesignUser" onClick={onDelete}>Eliminar</button>
+                <div className="buttonContainer">
+                    <button className="cButtonDeleteDesign" onClick={onDelete}>Borrar</button>
+                </div>
             )}
         </div>
     );

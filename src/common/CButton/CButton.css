@@ -1,5 +1,5 @@
 .cButtonDesign {
-    height: 2.5vw;
+    height: 5vh;
     width: 18vw;
 
     background-color: rgb(169, 147, 146);
@@ -20,6 +20,37 @@
 }
 
 .cButtonDesign:hover {
+    background-color: rgb(100, 64, 62);
+    cursor: pointer;
+    transition: 0.2s;
+    cursor: pointer;
+    transition: 0.2s;
+    color: white;
+    border: 0.1em solid white;
+    box-shadow: none;
+
+}
+
+.cButtonDeleteDesign {
+    max-height: 3vh;
+    width: 6vw;
+    background-color: rgba(255, 0, 0, 0.406);
+    box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.5);
+    color: white;
+    font-weight: bold;
+    border: 0.1em solid white;
+    border-radius: 0.6em;
+    font-size: 1.3vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1vw;
+    font-family: "Pirata One", system-ui;
+    transition: 0.2s;
+    overflow-y: hidden;
+}
+
+.cButtonDeleteDesign:hover {
     background-color: rgb(100, 64, 62);
     cursor: pointer;
     transition: 0.2s;

@@ -52,8 +52,8 @@ export const Users = () => {
     };
     return (
         <>
-            <div className="userDesign">
-                <div className="titleDesign">
+            <div className="usersDesign">
+                <div className="titleUserDesign">
                     Lista de Usuarios
                 </div>
                 {users.length > 0 ? (

@@ -1,12 +1,39 @@
 .usersDesign {
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
-
-    background-color: rgba(210, 209, 209, 0.852);
+    background-color: white;
     color: black;
-
+    margin-top: 3em;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.titleUserDesign {
+    padding-top: 1.5em;
+    padding-bottom: 0.86em;
+    font-family: "Pirata One", system-ui;
+    color: rgb(100, 64, 62);
+    font-size: 4em;
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    text-align: center;
+}
+
+.cardsRosterAdmin{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .cardsRosterAdmin {
+        flex-direction: column;
+        align-items: center;
+    }
 }
