@@ -31,9 +31,15 @@
     justify-content: center;
 }
 
-@media (max-width: 768px) {
-    .cardsRosterAdmin {
-        flex-direction: column;
-        align-items: center;
-    }
+.inputSearchDesign {
+    height: 2vw;
+    width: 18vw;
+    font-family: "Roboto", sans-serif;
+    border: 0.1em solid rgb(100, 64, 62);
+    border-radius: 0.6em;
+    margin: 0.5vw;
+    background-color: rgb(169, 147, 146);
+    color: black;
+    font-size: 1em;
+    outline: none;
 }
