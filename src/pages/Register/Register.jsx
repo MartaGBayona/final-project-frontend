@@ -2,7 +2,7 @@ import "./Register.css"
 import { useState } from "react"
 import { RegisterUser } from "../../services/apiCalls"
 import { useNavigate } from "react-router-dom"
-import { CInput } from "../../common/CInput/CInput"
+import { CInputLogRegister } from "../../common/CInput/CInput"
 import { CButton } from "../../common/CButton/CButton"
 import { validate } from "../../utils/functions"
 
@@ -76,8 +76,8 @@ export const Register = () => {
                         Registrate
                     </div>
                     <div className='titleInputDesign'>Nombre</div>
-                    <CInput
-                        className={`CInputDesign ${userError.nameError ? "CInputDesignError" : ""}`}
+                    <CInputLogRegister
+                        className={`cInputLogRegisterDesign ${userError.nameError ? "CInputDesignError" : ""}`}
                         type={"text"}
                         placeholder={"nombre"}
                         name={"name"}
@@ -88,8 +88,8 @@ export const Register = () => {
                     }}
                     />
                     <div className='titleInputDesign'>Primer Apellido</div>
-                    <CInput
-                        className={`CInputDesign ${userError.nameError ? "CInputDesignError" : ""}`}
+                    <CInputLogRegister
+                        className={`cInputLogRegisterDesign ${userError.nameError ? "CInputDesignError" : ""}`}
                         type={"text"}
                         placeholder={"apellido"}
                         name={"surname"}
@@ -100,8 +100,8 @@ export const Register = () => {
                     }}
                     />
                     <div className='titleInputDesign'>Segundo Apellido</div>
-                    <CInput
-                        className={`CInputDesign ${userError.nameError ? "CInputDesignError" : ""}`}
+                    <CInputLogRegister
+                        className={`cInputLogRegisterDesign ${userError.nameError ? "CInputDesignError" : ""}`}
                         type={"text"}
                         placeholder={"apellido"}
                         name={"secondSurname"}
@@ -112,8 +112,8 @@ export const Register = () => {
                     }}
                     />
                     <div className='titleInputDesign'>Fecha de nacimiento</div>
-                    <CInput
-                        className={`CInputDesign ${userError.nameError ? "CInputDesignError" : ""}`}
+                    <CInputLogRegister
+                        className={`cInputLogRegisterDesign ${userError.nameError ? "CInputDesignError" : ""}`}
                         type={"date"}
                         placeholder={"Fecha de nacimiento"}
                         name={"birth"}
@@ -125,8 +125,8 @@ export const Register = () => {
                     />
                     <div className="error">{userError.nameError}</div>
                     <div className='titleInputDesign'>Correo</div>
-                    <CInput
-                        className={`CInputDesign ${userError.emailError ? "CInputDesignError" : ""}`}
+                    <CInputLogRegister
+                        className={`cInputLogRegisterDesign ${userError.emailError ? "CInputDesignError" : ""}`}
                         type={"email"}
                         placeholder={"email"}
                         name={"email"}
@@ -138,8 +138,8 @@ export const Register = () => {
                     />
                     <div className="error">{userError.emailError}</div>
                     <div className='titleInputDesign'>Contraseña</div>
-                    <CInput
-                        className={`CInputDesign ${userError.passwordError ? "CInputDesignError" : ""}`}
+                    <CInputLogRegister
+                        className={`cInputLogRegisterDesign ${userError.passwordError ? "CInputDesignError" : ""}`}
                         type={"password"}
                         placeholder={"contraseña"}
                         name={"password"}

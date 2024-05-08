@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { CInput } from '../../common/CInput/CInput'
+import { CInputLogRegister } from '../../common/CInput/CInput'
 import { LoginUser } from "../../services/apiCalls";
 import { login } from "../../app/slices/userSlice";
 import './Login.css'
@@ -88,14 +88,14 @@ export const Login = () => {
                 Acceso
             </div>
             <div className='titleInputDesign'>Correo:</div>
-            <CInput
+            <CInputLogRegister
                 type="email"
                 name="email"
                 value={user.email || ""}
                 changeEmit={(e) => inputHandler(e)}
             />
             <div className='titleInputDesign'>Contraseña:</div>
-            <CInput
+            <CInputLogRegister
                 type="password"
                 name="password"
                 value={user.password || ""}
