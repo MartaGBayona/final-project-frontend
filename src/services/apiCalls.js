@@ -123,6 +123,33 @@ export const GetAllUsers = async (credentials) => {
     }
 }
 
+export const DeleteUser = async (credentials, data) => {
+    console.log(data)
+    const options = {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${credentials}`
+        },
+        body: JSON.stringify(data)
+    };
+
+    try {
+        const response = await fetch(`${root}users/${data.id}`, options);
+        const responseData = await response.json();
+        console.log("borrar usuarios", data)
+        console.log("soy la respuesta del delete", response)
+
+        if (!responseData.success) {
+            throw new Error(responseData.message);
+        }
+
+        return responseData;
+    } catch (error) {
+        return { success: false, message: error.message };
+    }
+};
+
 export const getCourse = async () => {
     const options = {
         method: "GET",
