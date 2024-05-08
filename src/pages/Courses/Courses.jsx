@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { userData } from "../../app/slices/userSlice";
 import { useState, useEffect } from "react";
 import { CourseCard } from "../../common/Card/Card";
-import { getCourse, UpdateCourse, CreateCourse, DeleteCourse } from "../../services/apiCalls";
+import { getCourse, UpdateCourse, CreateCourse, DeleteCourse, PostInscription } from "../../services/apiCalls";
 
 export const Courses = () => {
     const rdxUser = useSelector(userData);
@@ -106,6 +106,23 @@ export const Courses = () => {
         setCourses(updatedCourses);
     };
 
+    const registerUserInCourse = async (courseId) => {
+        try {
+            const studentId = rdxUser.credentials.user.id;
+            const response = await PostInscription(rdxUser.credentials, { courseId, student_id: studentId });
+            console.log("soy las credenciales en inscripcion", rdxUser.credentials)
+            console.log(studentId);
+            if (response.success) {
+                fetchCourses();
+            } else {
+                console.error('Error al registrar usuario en el curso:', response.message);
+            }
+        } catch (error) {
+            console.error('Error al registrar usuario en el curso:', error);
+        }
+    };
+    
+
     useEffect(() => {
         if (courses.length === 0) {
             fetchCourses();
@@ -118,16 +135,27 @@ export const Courses = () => {
             <div className="cardRoster">
                 {courses.length > 0 ? (
                     <div>
-                        {courses.map((course, index) => (
-                            <CourseCard
-                                key={index}
-                                title={course.title}
-                                description={course.description}
-                                handleUpdate={(newData) => handleCourseUpdate(course.id, newData)}
-                                handleDelete={() => deleteCourseHandler(course.id)}
-                                userRoleId={roleId === 1 ? roleId : null}
-                            />
-                        ))}
+                        {courses.map((course, index) => {
+                            const courseId = course.id;
+                            return (
+                                <div key={index}>
+                                    <CourseCard
+                                        title={course.title}
+                                        description={course.description}
+                                        handleUpdate={(newData) => handleCourseUpdate(course.id, newData)}
+                                        handleDelete={() => deleteCourseHandler(course.id)}
+                                        userRoleId={roleId === 1 ? roleId : null}
+                                    />
+                                    {roleId !== 1 && ( // Solo muestra el botón para usuarios que no son administradores
+                                        <div className="registerButtonContainer">
+                                            <button className="registerButtonDesign" onClick={() => registerUserInCourse(courseId)}>
+                                                ¡Apúntate al curso!
+                                            </button>
+                                        </div>
+                                    )}
+                                </div>
+                            );
+                        })}
                     </div>
                 ) : (
                     <div>Los cursos están cargando...</div>
@@ -156,6 +184,6 @@ export const Courses = () => {
             )}
         </div>
     );
+    
 }
-
 

@@ -244,4 +244,31 @@ export const DeleteCourse = async (credentials, courseId) => {
     }
 };
 
+export const PostInscription = async (credentials, data) => {
+    const options = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${credentials.token}`
+        },
+        body: JSON.stringify(data)
+    };
+
+    try {
+        const response = await fetch(`${root}courses/${data.courseId}/inscriptions`, options);
+        console.log("soy la respuesta inscripcion", response)
+        const responseData = await response.json();
+        console.log('Data en postInscription:', data);
+
+        if (!responseData.success) {
+            throw new Error(responseData.message);
+        }
+
+        return responseData;
+    } catch (error) {
+        return { success: false, message: error.message };
+    }
+}
+
+
 
