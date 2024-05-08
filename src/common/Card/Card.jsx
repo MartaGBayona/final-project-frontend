@@ -54,7 +54,8 @@ export const CourseCard = ({ title, description, handleUpdate, handleDelete, use
 };
 
 
-export const UserAdminCard = ({ name, surname, secondSurname, birth, email, role_id, isDeletable, onDelete }) => {
+export const UserAdminCard = ({ name, surname, secondSurname, birth, email, role, isDeletable, onDelete }) => {
+    console.log("soy el roleid", role)
     return (
         <div className="userCard">
             <div className="userData">
@@ -63,7 +64,7 @@ export const UserAdminCard = ({ name, surname, secondSurname, birth, email, role
                 <div className="userName">Segundo Apellido: {secondSurname}</div>
                 <div className="userName">Fecha de Nacimiento: {birth}</div>
                 <div className="userEmail">Correo: {email}</div>
-                <div className="userRole">Rol: {role_id}</div>
+                <div className="userRole">Rol: {role}</div>
 
             </div>
             {isDeletable && (
