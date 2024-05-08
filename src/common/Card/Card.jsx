@@ -52,3 +52,23 @@ export const CourseCard = ({ title, description, handleUpdate, handleDelete, use
         </div>
     );
 };
+
+
+export const UserAdminCard = ({ name, surname, secondSurname, birth, email, role, isDeletable, onDelete }) => {
+    return (
+        <div className="userCard">
+            <div className="userData">
+                <div className="userName">Nombre: {name}</div>
+                <div className="userName">Primer Apellido: {surname}</div>
+                <div className="userName">Segundo Apellido: {secondSurname}</div>
+                <div className="userName">Fecha de Nacimiento: {birth}</div>
+                <div className="userEmail">Correo: {email}</div>
+                <div className="userRole">Rol: {role}</div>
+
+            </div>
+            {isDeletable && (
+                <button className="buttonDesignUser" onClick={onDelete}>Eliminar</button>
+            )}
+        </div>
+    );
+}

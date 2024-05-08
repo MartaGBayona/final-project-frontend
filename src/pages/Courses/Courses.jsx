@@ -33,15 +33,9 @@ export const Courses = () => {
             if (roleId === 1) {
                 const updatedCourse = await UpdateCourse(rdxUser.credentials, newData, courseId);
 
-                // Actualizar solo si la actualización fue exitosa
                 if (updatedCourse.success) {
-                    // Obtener los cursos actualizados desde la API después de la actualización
                     const updatedCoursesData = await getCourse();
-
-                    // Actualizar el estado de los cursos con los datos actualizados de la API
                     setCourses(updatedCoursesData.data);
-
-                    console.log('Curso actualizado:', updatedCourse);
                 } else {
                     console.error('Error al actualizar el curso:', updatedCourse.message);
                 }

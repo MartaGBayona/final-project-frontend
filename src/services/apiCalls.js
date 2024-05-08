@@ -98,6 +98,30 @@ export const UpdateProfile = async (credentials, data) => {
     }
 };
 
+export const GetAllUsers = async (token) => {
+    const options = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+    };
+
+    try {
+        const response = await fetch(`${root}users`, options);
+        const data = await response.json();
+
+        if (!data.success) {
+            throw new Error(data.message);
+        }
+
+        const servicesData = data.data;
+        return servicesData;
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
 export const getCourse = async () => {
     const options = {
         method: "GET",
