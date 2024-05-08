@@ -52,3 +52,21 @@
     padding-left: 6em;
     padding-top: 1em;
 }
+
+@media (max-width: 780px) {
+    .loginDesign {
+        flex-direction: column;
+    }
+    .leftLoginDesign {
+        display: none;
+    }
+
+    .rightLoginDesign {
+        width: 100%;
+    }
+
+    .titleInputDesign {
+        padding-left: 1em;
+        font-size: 2em;
+    }
+}
