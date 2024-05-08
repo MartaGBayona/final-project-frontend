@@ -73,3 +73,20 @@ export const UserAdminCard = ({ name, surname, secondSurname, birth, email, role
         </div>
     );
 }
+
+export const InscriptionCard = ({title, description, isDeletable, onDelete }) => {
+    return (
+        <div className="userCard">
+            <div className="userData">
+                <div>Nombre: {title}</div>
+                <div>Primer Apellido: {description}</div>
+
+            </div>
+            {isDeletable && (
+                <div className="buttonContainer">
+                    <button className="cButtonDeleteDesign" onClick={onDelete}>Borrar</button>
+                </div>
+            )}
+        </div>
+    );
+}

@@ -110,8 +110,6 @@ export const Courses = () => {
         try {
             const studentId = rdxUser.credentials.user.id;
             const response = await PostInscription(rdxUser.credentials, { courseId, student_id: studentId });
-            console.log("soy las credenciales en inscripcion", rdxUser.credentials)
-            console.log(studentId);
             if (response.success) {
                 fetchCourses();
             } else {
@@ -146,7 +144,7 @@ export const Courses = () => {
                                         handleDelete={() => deleteCourseHandler(course.id)}
                                         userRoleId={roleId === 1 ? roleId : null}
                                     />
-                                    {roleId !== 1 && ( // Solo muestra el botón para usuarios que no son administradores
+                                    {rdxUser.credentials.token && ( 
                                         <div className="registerButtonContainer">
                                             <button className="registerButtonDesign" onClick={() => registerUserInCourse(courseId)}>
                                                 ¡Apúntate al curso!

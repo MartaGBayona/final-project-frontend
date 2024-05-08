@@ -270,5 +270,27 @@ export const PostInscription = async (credentials, data) => {
     }
 }
 
+export const GetMyInscriptions = async (credentials, userId) => {
+    console.log("soy el userId", userId)
+    const options = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${credentials}`
+        },
+    };
+    try {
+        const response = await fetch(`${root}/users/${userId}/inscriptions`, options);
+        const data = await response.json();
+        console.log("credenciales de inscripciones",credentials)
+        console.log("data del perfil/inscripciones", userId)
+        return data;
+        
+    } catch (error) {
+        console.error("Error al obtener el perfil", error);
+        throw error;
+    }
+}
+
 
 

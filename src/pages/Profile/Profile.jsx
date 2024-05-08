@@ -4,11 +4,12 @@ import { useDispatch } from "react-redux"
 import { userData } from "../../app/slices/userSlice";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { GetProfile, UpdateProfile } from '../../services/apiCalls';
+import { GetProfile, UpdateProfile, GetMyInscriptions } from '../../services/apiCalls';
 import { updated } from "../../app/slices/userSlice";
 import { validate } from '../../utils/functions';
 import { CInput } from '../../common/CInput/CInput';
 import { CButton } from '../../common/CButton/CButton';
+import { InscriptionCard } from '../../common/Card/Card';
 
 
 
@@ -21,6 +22,7 @@ export const Profile = () => {
     console.log("soy redux", rdxUser)
 
     const [write, setWrite] = useState("disabled");
+    const [userInscriptions, setUserInscriptions] = useState([]);
     const [loadedData, setLoadedData] = useState();
     
     const [user, setUser] = useState({
@@ -61,6 +63,25 @@ export const Profile = () => {
             throw error;
         }
     };
+
+    useEffect(() => {
+        const getUserInscriptions = async () => {
+            try {
+                const studentId = rdxUser.credentials.user.id;
+                console.log("soy el student", studentId)
+                console.log("soy las credenciales en getInscription", rdxUser.credentials)
+                const fetched = await GetMyInscriptions(rdxUser.credentials, studentId);
+                
+                setUserInscriptions(fetched);
+            } catch (error) {
+                console.error('Error al obtener los posts del usuario:', error);
+                throw error;
+            }
+        };
+        if (rdxUser.credentials.token) {
+            getUserInscriptions({ token: rdxUser.credentials });
+        }
+    }, [rdxUser]);
 
     useEffect(() => {
         if (!rdxUser.credentials.token) {
@@ -180,6 +201,22 @@ export const Profile = () => {
                 title={write === "" ? "Confirmar" : "Editar"}
                 functionEmit={write === "" ? updateData : () => setWrite("")}
             />
+                        <div className="titleDesignRegister">
+                Mis Inscripciones
+            </div>
+            {userInscriptions.length > 0 ? (
+                                        userInscriptions.map(inscription => (
+                                            <InscriptionCard
+                                                key={inscription._id}
+                                                title={<div className="postTitle">{inscription.title}</div>}
+                                                description={<div className="postDescription">{inscription.description}</div>}
+                                                isDeletable={true}
+                                                // onDelete={() => deletePostHandler(inscription._id)}
+                                            />
+                                        ))
+                                    ) : (
+                                        <div>No hay posts para mostrar.</div>
+                                    )}
         </div>
     )
 }
