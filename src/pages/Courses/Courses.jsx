@@ -27,6 +27,7 @@ export const Courses = () => {
         }
     };
 
+
     const handleCourseUpdate = async (courseId, newData) => {
         console.log('ID del curso:', courseId);
         try {
@@ -140,6 +141,7 @@ export const Courses = () => {
                                     <CourseCard
                                         title={course.title}
                                         description={course.description}
+                                        subjects={course.subjects}
                                         handleUpdate={(newData) => handleCourseUpdate(course.id, newData)}
                                         handleDelete={() => deleteCourseHandler(course.id)}
                                         userRoleId={roleId === 1 ? roleId : null}

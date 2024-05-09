@@ -8,7 +8,6 @@ export const LoginUser = async (user) => {
         },
         body: JSON.stringify(user)
     };
-
     try {
         const response = await fetch(`${root}auth/login`, options);
 
@@ -40,7 +39,6 @@ export const RegisterUser = async (user) => {
 
     try {
         const response = await fetch(`${root}auth/register`, options)
-
         const data = await response.json();
 
         if (!data.success) {
@@ -64,8 +62,6 @@ export const GetProfile = async (credentials) => {
     try {
         const response = await fetch(`${root}users/profile`, options);
         const data = await response.json();
-        console.log("credenciales de la apicall",credentials)
-        console.log("data de la apicall", data)
         return data;
         
     } catch (error) {
@@ -83,10 +79,8 @@ export const UpdateProfile = async (credentials, data) => {
         },
         body: JSON.stringify(data)
     };
-
     try {
         const response = await fetch(`${root}users/${credentials.user.id}`, options);
-        console.log("soy la data de update",data)
         const responseData = await response.json();
 
         if(!responseData.success) {
@@ -106,7 +100,6 @@ export const GetAllUsers = async (credentials) => {
             "Authorization": `Bearer ${credentials}`
         },
     };
-
     try {
         const response = await fetch(`${root}users`, options);
         const data = await response.json();
@@ -116,7 +109,6 @@ export const GetAllUsers = async (credentials) => {
         }
 
         const servicesData = data.data;
-        console.log("soy los usuarios", data)
         return servicesData;
     } catch (error) {
         throw new Error(error);
@@ -124,7 +116,6 @@ export const GetAllUsers = async (credentials) => {
 }
 
 export const DeleteUser = async (credentials, data) => {
-    console.log(data)
     const options = {
         method: "DELETE",
         headers: {
@@ -133,12 +124,9 @@ export const DeleteUser = async (credentials, data) => {
         },
         body: JSON.stringify(data)
     };
-
     try {
         const response = await fetch(`${root}users/${data.id}`, options);
         const responseData = await response.json();
-        console.log("borrar usuarios", data)
-        console.log("soy la respuesta del delete", response)
 
         if (!responseData.success) {
             throw new Error(responseData.message);
@@ -157,12 +145,11 @@ export const getCourse = async () => {
             "Content-Type": "application/json",
         },
     };
-
     try {
         const response = await fetch(`${root}courses`, options)
         const data = await response.json();
-        console.log("soy la respuesta a los cursos", response)
-        console.log("soy los cursos", data)
+
+        console.log("soy la data de los cursos", data)
         return data
     } catch (error) {
         return error;
@@ -171,8 +158,6 @@ export const getCourse = async () => {
 
 
 export const UpdateCourse = async (credentials, data, courseId) => {
-    console.log('Data enviada en la solicitud PUT:', data);
-    console.log('ID del curso:', courseId);
     const options = {
         method: "PUT",
         headers: {
@@ -181,12 +166,8 @@ export const UpdateCourse = async (credentials, data, courseId) => {
         },
         body: JSON.stringify(data)
     };
-    console.log(JSON.stringify(data))
-    console.log("Datos enviados en la solicitud PUT:", data)
-
     try {
         const response = await fetch(`${root}courses/${courseId}`, options);
-        console.log("soy la data de updateCourse", data);
         const responseData = await response.json();
 
         if(!responseData.success) {
@@ -207,12 +188,9 @@ export const CreateCourse = async (credentials, data) => {
         },
         body: JSON.stringify(data)
     };
-
     try {
         const response = await fetch(`${root}courses`, options);
-        console.log("soy la respuesta curso creado", response)
         const responseData = await response.json();
-        console.log('Data enviada en la solicitud POST:', data);
 
         if (!responseData.success) {
             throw new Error(responseData.message);
@@ -232,7 +210,6 @@ export const DeleteCourse = async (credentials, courseId) => {
             "Authorization": `Bearer ${credentials}`
         },
     };
-
     try {
         const response = await fetch(`${root}courses/${courseId}`, options);
         const responseData = await response.json();
@@ -253,7 +230,6 @@ export const PostInscription = async (credentials, data) => {
         },
         body: JSON.stringify(data)
     };
-
     try {
         const response = await fetch(`${root}courses/${data.courseId}/inscriptions`, options);
         const responseData = await response.json();
@@ -281,8 +257,6 @@ export const GetMyInscriptions = async (credentials, studentId) => {
         const response = await fetch(`${root}users/${studentId}/inscriptions`, options);
         console.log("soy la respuesta del getInscriptions", response)
         const data = await response.json();
-        console.log("credenciales de inscripciones",credentials)
-        console.log("data del perfil/inscripciones", studentId)
         return data;
         
     } catch (error) {
@@ -290,6 +264,7 @@ export const GetMyInscriptions = async (credentials, studentId) => {
         throw error;
     }
 }
+
 
 
 

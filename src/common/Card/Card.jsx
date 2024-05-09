@@ -1,36 +1,60 @@
-
+import { useState } from "react";
 import "./Card.css";
 
-export const CourseCard = ({ title, description, handleUpdate, handleDelete, userRoleId }) => {
-
+export const CourseCard = ({ title, description, subjects, handleUpdate, handleDelete, userRoleId }) => {
+    const [isEditing, setIsEditing] = useState(false)
     const handleTitleChange = (e) => {
-        handleUpdate({ title: e.target.innerText, description });
+        handleUpdate({ title: e.target.innerText, description, subjects });
     };
     const handleDescriptionChange = (e) => {
-        handleUpdate({ title, description: e.target.innerText });
+        handleUpdate({ title, description: e.target.innerText, subjects });
+    };
+
+    const handleEditClick = () => {
+        setIsEditing(true); 
+    };
+
+    const handleConfirmClick = () => {
+        setIsEditing(false); 
+        handleUpdate({ title, description, subjects }); 
     };
 
     return (
         <div className="courseCardDesign">
             <div
                 className="titleCourseDesign"
-                contentEditable={userRoleId === 1}
+                contentEditable={userRoleId === 1 && isEditing}
                 onBlur={handleTitleChange}
             >
                 {title}
             </div>
             <div
                 className="descriptionCourseDesign"
-                contentEditable={userRoleId === 1}
+                contentEditable={userRoleId === 1 && isEditing}
                 onBlur={handleDescriptionChange}
             >
                 {description}
+                </div>
+            <div className="subjectsList">
+                <h4>Asignaturas:</h4>
+                {subjects.map(subject => (
+                    <div key={subject.id}>
+                        <div>{subject.title}</div>
+                        <div>{subject.description}</div>
+                    </div>
+                ))}
             </div>
             {userRoleId === 1 && (
                 <>
-                    <button className="cButtonDesign" onClick={handleUpdate}>
-                        Modificar datos
-                    </button>
+                    {isEditing ? (
+                        <button className="cButtonDesign" onClick={handleConfirmClick}>
+                            Confirmar
+                        </button>
+                    ) : (
+                        <button className="cButtonDesign" onClick={handleEditClick}>
+                            Editar
+                        </button>
+                    )}
                     <button className="cButtonDesign" onClick={handleDelete}>
                         Borrar
                     </button>
