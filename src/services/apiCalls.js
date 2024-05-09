@@ -256,9 +256,7 @@ export const PostInscription = async (credentials, data) => {
 
     try {
         const response = await fetch(`${root}courses/${data.courseId}/inscriptions`, options);
-        console.log("soy la respuesta inscripcion", response)
         const responseData = await response.json();
-        console.log('Data en postInscription:', data);
 
         if (!responseData.success) {
             throw new Error(responseData.message);
@@ -270,20 +268,21 @@ export const PostInscription = async (credentials, data) => {
     }
 }
 
-export const GetMyInscriptions = async (credentials, userId) => {
-    console.log("soy el userId", userId)
+export const GetMyInscriptions = async (credentials, studentId) => {
+    console.log("soy el studentId", studentId)
     const options = {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${credentials}`
+            "Authorization": `Bearer ${credentials.token}`
         },
     };
     try {
-        const response = await fetch(`${root}/users/${userId}/inscriptions`, options);
+        const response = await fetch(`${root}users/${studentId}/inscriptions`, options);
+        console.log("soy la respuesta del getInscriptions", response)
         const data = await response.json();
         console.log("credenciales de inscripciones",credentials)
-        console.log("data del perfil/inscripciones", userId)
+        console.log("data del perfil/inscripciones", studentId)
         return data;
         
     } catch (error) {

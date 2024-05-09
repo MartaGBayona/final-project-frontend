@@ -19,12 +19,7 @@ export const Profile = () => {
     const dispatch = useDispatch();
     const rdxUser = useSelector(userData);
 
-    console.log("soy redux", rdxUser)
-
     const [write, setWrite] = useState("disabled");
-    const [userInscriptions, setUserInscriptions] = useState([]);
-    const [loadedData, setLoadedData] = useState();
-    
     const [user, setUser] = useState({
         name: "",
         surname: "",
@@ -40,6 +35,9 @@ export const Profile = () => {
         birthError: "",
         emailError: "",
     });
+
+    const [userInscriptions, setUserInscriptions] = useState([]);
+    const [loadedData, setLoadedData] = useState();
 
     const getUserProfile = async (credentials) => {
         try {
@@ -68,20 +66,18 @@ export const Profile = () => {
         const getUserInscriptions = async () => {
             try {
                 const studentId = rdxUser.credentials.user.id;
-                console.log("soy el student", studentId)
-                console.log("soy las credenciales en getInscription", rdxUser.credentials)
                 const fetched = await GetMyInscriptions(rdxUser.credentials, studentId);
-                
-                setUserInscriptions(fetched);
+                setUserInscriptions(fetched.data || []);
             } catch (error) {
-                console.error('Error al obtener los posts del usuario:', error);
+                console.error("Error al obtener las inscripciones del usuario:", error);
                 throw error;
             }
         };
-        if (rdxUser.credentials.token) {
-            getUserInscriptions({ token: rdxUser.credentials });
+
+        if (rdxUser.credentials && loadedData) {
+            getUserInscriptions();
         }
-    }, [rdxUser]);
+    }, [rdxUser.credentials, loadedData]);
 
     useEffect(() => {
         if (!rdxUser.credentials.token) {
@@ -93,7 +89,7 @@ export const Profile = () => {
         if (!loadedData) {
             getUserProfile(rdxUser.credentials);
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [rdxUser.credentials, loadedData]);
 
     const inputHandler = (e) => {
@@ -129,7 +125,7 @@ export const Profile = () => {
             throw error;
         }
     };
-
+    console.log("Cantidad de inscripciones:", userInscriptions.length)
     return (
         <div className='profileDesign'>
             <div className="titleDesignRegister">
@@ -201,22 +197,22 @@ export const Profile = () => {
                 title={write === "" ? "Confirmar" : "Editar"}
                 functionEmit={write === "" ? updateData : () => setWrite("")}
             />
-                        <div className="titleDesignRegister">
+            <div className="titleDesignRegister">
                 Mis Inscripciones
             </div>
-            {userInscriptions.length > 0 ? (
-                                        userInscriptions.map(inscription => (
-                                            <InscriptionCard
-                                                key={inscription._id}
-                                                title={<div className="postTitle">{inscription.title}</div>}
-                                                description={<div className="postDescription">{inscription.description}</div>}
-                                                isDeletable={true}
-                                                // onDelete={() => deletePostHandler(inscription._id)}
-                                            />
-                                        ))
-                                    ) : (
-                                        <div>No hay posts para mostrar.</div>
-                                    )}
+            {userInscriptions && userInscriptions.length > 0 ? (
+                userInscriptions.map(inscription => (
+                    <InscriptionCard
+                        key={inscription.course.id}
+                        title={<div>{inscription.course.title}</div>}
+                        description={<div>{inscription.course.description}</div>}
+                        isDeletable={true}
+                    // onDelete={() => deletePostHandler(inscription._id)}
+                    />
+                ))
+            ) : (
+                <div>No hay posts para mostrar.</div>
+            )}
         </div>
     )
 }

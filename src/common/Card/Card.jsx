@@ -75,11 +75,12 @@ export const UserAdminCard = ({ name, surname, secondSurname, birth, email, role
 }
 
 export const InscriptionCard = ({title, description, isDeletable, onDelete }) => {
+    console.log("InscriptionCard renderizando con:", title, description);
     return (
         <div className="userCard">
             <div className="userData">
-                <div>Nombre: {title}</div>
-                <div>Primer Apellido: {description}</div>
+                <div>Titulo: {title}</div>
+                <div>Descripción {description}</div>
 
             </div>
             {isDeletable && (
