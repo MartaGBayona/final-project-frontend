@@ -23,3 +23,41 @@
     align-items: center; 
     text-align: center;
 }
+
+/* .registerButtonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+} */
+
+.registerButtonDesign {
+    height: 2.5em;
+    width: 20em;
+
+    background-color: rgb(169, 147, 146);
+    box-shadow: 0.2em 0.2em 0.5em rgba(0, 0, 0, 0.5);
+    color: white;
+    font-weight: bold;
+    border: 0.1em solid white;
+    border-radius: 0.6em;
+    font-size: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5em;
+    font-family: "Pirata One", system-ui;
+    transition: 0.2s;
+    overflow-y: hidden;
+}
+
+.registerButtonDesign:hover {
+    background-color: rgb(100, 64, 62);
+    cursor: pointer;
+    transition: 0.2s;
+    cursor: pointer;
+    transition: 0.2s;
+    color: white;
+    border: 0.1em solid white;
+    box-shadow: none;
+}

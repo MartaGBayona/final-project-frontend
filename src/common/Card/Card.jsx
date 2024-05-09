@@ -2,41 +2,45 @@ import { useState } from "react";
 import "./Card.css";
 
 export const CourseCard = ({ title, description, subjects, handleUpdate, handleDelete, userRoleId }) => {
-    const [isEditing, setIsEditing] = useState(false)
-    const handleTitleChange = (e) => {
-        handleUpdate({ title: e.target.innerText, description, subjects });
-    };
-    const handleDescriptionChange = (e) => {
-        handleUpdate({ title, description: e.target.innerText, subjects });
-    };
+    const [write, setWrite] = useState(true);
+    const [editedTitle, setEditedTitle] = useState(title); 
+    const [editedDescription, setEditedDescription] = useState(description);
 
     const handleEditClick = () => {
-        setIsEditing(true); 
+        setWrite(false);
     };
 
     const handleConfirmClick = () => {
-        setIsEditing(false); 
-        handleUpdate({ title, description, subjects }); 
+        setWrite(true); 
+        handleUpdate({ title: editedTitle, description: editedDescription, subjects });
+    };
+
+    const handleTitleChange = (e) => {
+        setEditedTitle(e.target.innerText);
+    };
+
+    const handleDescriptionChange = (e) => {
+        setEditedDescription(e.target.innerText);
     };
 
     return (
         <div className="courseCardDesign">
             <div
                 className="titleCourseDesign"
-                contentEditable={userRoleId === 1 && isEditing}
+                contentEditable={userRoleId === 1 && !write}
                 onBlur={handleTitleChange}
             >
                 {title}
             </div>
             <div
                 className="descriptionCourseDesign"
-                contentEditable={userRoleId === 1 && isEditing}
+                contentEditable={userRoleId === 1 && !write}
                 onBlur={handleDescriptionChange}
             >
                 {description}
-                </div>
+            </div>
             <div className="subjectsList">
-                <h4>Asignaturas:</h4>
+                <div>Asignaturas:</div>
                 {subjects.map(subject => (
                     <div key={subject.id}>
                         <div>{subject.title}</div>
@@ -46,13 +50,13 @@ export const CourseCard = ({ title, description, subjects, handleUpdate, handleD
             </div>
             {userRoleId === 1 && (
                 <>
-                    {isEditing ? (
-                        <button className="cButtonDesign" onClick={handleConfirmClick}>
-                            Confirmar
-                        </button>
-                    ) : (
+                    {write ? (
                         <button className="cButtonDesign" onClick={handleEditClick}>
                             Editar
+                        </button>
+                    ) : (
+                        <button className="cButtonDesign" onClick={handleConfirmClick}>
+                            Confirmar
                         </button>
                     )}
                     <button className="cButtonDesign" onClick={handleDelete}>

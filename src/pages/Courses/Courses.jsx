@@ -67,16 +67,6 @@ export const Courses = () => {
         }
     };
 
-    const handleTitleChange = (courseId, newTitle) => {
-        const updatedCourses = courses.map(course => {
-            if (course.id === courseId) {
-                return { ...course, title: newTitle };
-            }
-            return course;
-        });
-        setCourses(updatedCourses);
-    };
-
     const deleteCourseHandler = async (courseId) => {
         setLoading(true);
     
@@ -95,16 +85,6 @@ export const Courses = () => {
             setErrorMessage("Error deleting course");
             setLoading(false);
         }
-    };
-
-    const handleDescriptionChange = (courseId, newDescription) => {
-        const updatedCourses = courses.map(course => {
-            if (course.id === courseId) {
-                return { ...course, description: newDescription };
-            }
-            return course;
-        });
-        setCourses(updatedCourses);
     };
 
     const registerUserInCourse = async (courseId) => {
@@ -184,6 +164,5 @@ export const Courses = () => {
             )}
         </div>
     );
-    
 }
 
