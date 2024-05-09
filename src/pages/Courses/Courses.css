@@ -24,12 +24,13 @@
     text-align: center;
 }
 
-/* .registerButtonContainer {
+.registerButtonContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2em;
-} */
+
+    padding-bottom: 1.5em;
+}
 
 .registerButtonDesign {
     height: 2.5em;
