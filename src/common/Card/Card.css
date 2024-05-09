@@ -72,3 +72,25 @@
     padding: 0.5em;
     margin-top: auto;
 }
+
+.inscriptionCard {
+    padding-top: 3em;
+    min-height: 3em;
+    width: 90vw;
+    font-family: "Roboto", sans-serif;
+    background-color: rgb(169, 147, 146);
+    border: 0.1em solid rgb(74, 65, 66);
+    border-radius: 0.6em;
+    font-size: 1em;
+    display: flex;
+    flex-direction: column;
+    margin: 0.5vw;
+    padding: 0.5vw;
+    color: black;
+}
+
+.inscriptionData {
+    margin: 1em;
+    text-align: justify;
+}
+
