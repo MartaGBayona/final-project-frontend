@@ -1,14 +1,42 @@
 .courseCardDesign {
     font-family: "Roboto", sans-serif;
-    width: 100%;
+    width: 85vw;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-bottom: 6em;
-    flex-wrap: wrap;
-    background-color: white;
+    margin: 0.5vw;
+    padding: 0.5vw;
+    font-family: "Roboto", sans-serif;
+    background-color: rgb(169, 147, 146);
+    border: 0.1em solid rgb(74, 65, 66);
+    border-radius: 0.6em;
+}
+
+.titleCourseDesign {
+    display: flex;
+    width: 80vw;
+    font-size: 2em;
+    font-family: "Roboto", sans-serif;
+    background-color: rgb(169, 147, 146);
+    color:black;
+    font-weight: bold;
+    border: none;
+    margin-bottom: 1em;
+}
+
+.descriptionCourseDesign {
+    display: flex;
+    width: 80vw;
+    font-family: "Roboto", sans-serif;
+    background-color: rgb(169, 147, 146);
+    color:black;
+    min-height: auto;
+    font-size: 1.5em;
+    text-align: justify;
+    border: none;
+    resize: none;
 }
 
 .inputCardDesign {
@@ -31,9 +59,9 @@
     font-family: "Roboto", sans-serif;
     background-color: white;
     color:black;
-    width: 90vw;
-    min-height: 22em;
-    font-size: 2em;
+    min-height: auto;
+    font-size: 1.5em;
+    text-align: justify;
     border: none;
     resize: none;
 }

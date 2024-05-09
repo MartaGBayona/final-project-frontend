@@ -1,53 +1,40 @@
-import { useState } from "react";
+
 import "./Card.css";
 
 export const CourseCard = ({ title, description, handleUpdate, handleDelete, userRoleId }) => {
-    const [newTitle, setNewTitle] = useState(title);
-    const [newDescription, setNewDescription] = useState(description);
 
-    const handleTitleInputChange = (e) => {
-        setNewTitle(e.target.value);
+    const handleTitleChange = (e) => {
+        handleUpdate({ title: e.target.innerText, description });
     };
-
-    const handleDescriptionInputChange = (e) => {
-        setNewDescription(e.target.value);
+    const handleDescriptionChange = (e) => {
+        handleUpdate({ title, description: e.target.innerText });
     };
-
-    const handleUpdateClick = () => {
-        handleUpdate({ title: newTitle, description: newDescription });
-    };
-
-    const handleDeleteClick = () => {
-        handleDelete();
-    }
 
     return (
         <div className="courseCardDesign">
-            <input
-                className="inputCardDesign"
-                type="text"
-                placeholder="Título"
-                value={newTitle}
-                onChange={handleTitleInputChange}
-                disabled={userRoleId !== 1}
-            />
-            <textarea
-                className="textareaCardDesign"
-                placeholder="Descripción"
-                value={newDescription}
-                onChange={handleDescriptionInputChange}
-                disabled={userRoleId !== 1}
-            />
+            <div
+                className="titleCourseDesign"
+                contentEditable={userRoleId === 1}
+                onBlur={handleTitleChange}
+            >
+                {title}
+            </div>
+            <div
+                className="descriptionCourseDesign"
+                contentEditable={userRoleId === 1}
+                onBlur={handleDescriptionChange}
+            >
+                {description}
+            </div>
             {userRoleId === 1 && (
                 <>
-                    <button className="cButtonDesign" onClick={handleUpdateClick}>
+                    <button className="cButtonDesign" onClick={handleUpdate}>
                         Modificar datos
                     </button>
-                    <button className="cButtonDesign" onClick={handleDeleteClick}>
+                    <button className="cButtonDesign" onClick={handleDelete}>
                         Borrar
                     </button>
                 </>
-                
             )}
         </div>
     );
@@ -78,7 +65,7 @@ export const InscriptionCard = ({title, description, isDeletable, onDelete }) =>
     return (
         <div className="inscriptionCard">
             <div className="inscriptionData">
-                <div>Título: {title}</div>
+                <div>Titulo: {title}</div>
                 <div>Descripción: {description}</div>
             </div>
             {isDeletable && (

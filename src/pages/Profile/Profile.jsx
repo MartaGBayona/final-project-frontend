@@ -197,7 +197,7 @@ export const Profile = () => {
                 title={write === "" ? "Confirmar" : "Editar"}
                 functionEmit={write === "" ? updateData : () => setWrite("")}
             />
-            <div className="titleDesignRegister">
+            <div className="titleDesignProfile">
                 Mis Inscripciones
             </div>
             {userInscriptions && userInscriptions.length > 0 ? (
