@@ -206,6 +206,7 @@ export const Profile = () => {
                         key={inscription.course.id}
                         title={<div>{inscription.course.title}</div>}
                         description={<div>{inscription.course.description}</div>}
+                        subjects={inscription.course.subjects}
                         isDeletable={true}
                     // onDelete={() => deletePostHandler(inscription._id)}
                     />

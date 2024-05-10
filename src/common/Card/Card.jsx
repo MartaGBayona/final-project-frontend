@@ -89,12 +89,21 @@ export const UserAdminCard = ({ name, surname, secondSurname, birth, email, role
     );
 }
 
-export const InscriptionCard = ({title, description, isDeletable, onDelete }) => {
+export const InscriptionCard = ({title, description, subjects, isDeletable, onDelete }) => {
     return (
         <div className="inscriptionCard">
             <div className="inscriptionData">
                 <div>Titulo: {title}</div>
                 <div>Descripción: {description}</div>
+                <div>Asignaturas:</div>
+                <div>
+                    {subjects.map(subject => (
+                        <div key={subject.id}>
+                            <div>{subject.title}</div>
+                            <div>{subject.description}</div>
+                        </div>
+                    ))}
+                </div>
             </div>
             {isDeletable && (
                 <div className="buttonContainer">

@@ -257,6 +257,7 @@ export const GetMyInscriptions = async (credentials, studentId) => {
         const response = await fetch(`${root}users/${studentId}/inscriptions`, options);
         console.log("soy la respuesta del getInscriptions", response)
         const data = await response.json();
+        console.log("soy la data de mis inscripciones", data)
         return data;
         
     } catch (error) {
