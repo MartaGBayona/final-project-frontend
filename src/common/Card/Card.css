@@ -9,7 +9,7 @@
     padding: 0.5em;
     padding-bottom: 3em;
     font-family: "Roboto", sans-serif;
-    background-color: rgb(169, 147, 146);
+    background-color: rgba(255, 255, 255, 0.500);
     border: 0.1em solid rgb(74, 65, 66);
     border-radius: 0.6em;
     margin-bottom: 3em;
@@ -21,7 +21,7 @@
     width: 80vw;
     font-size: 2.5em;
     font-family: "Pirata One", system-ui;
-    background-color: rgb(169, 147, 146);
+    background-color: rgba(169, 147, 146, 0);
     color:rgb(74, 65, 66);
     font-weight: bold;
     border-bottom: 0.1em solid rgb(74, 65, 66);
@@ -32,7 +32,7 @@
     display: flex;
     width: 80vw;
     font-family: "Roboto", sans-serif;
-    background-color: rgb(169, 147, 146);
+    background-color: rgba(169, 147, 146, 0);
     color:black;
     min-height: auto;
     font-size: 1.5em;
@@ -47,7 +47,7 @@
     height: 3.7vh;
     font-size: 1.5em;
     font-family: "Roboto", sans-serif;
-    background-color: rgba(255, 255, 255, 0.511);
+    background-color: rgba(255, 255, 255, 0.500);
     color:black;
     font-weight: bold;
     border-radius: 0.2em;
@@ -75,7 +75,7 @@
     min-height: 5vh;
     width: 90vw;
     font-family: "Roboto", sans-serif;
-    background-color: rgb(169, 147, 146);
+    background-color: rgba(255, 255, 255, 0.500);
     border: 0.1em solid rgb(74, 65, 66);
     border-radius: 0.6em;
     font-size: 1em;
@@ -117,7 +117,7 @@
     padding: 0.5em;
     padding-bottom: 3em;
     font-family: "Roboto", sans-serif;
-    background-color: rgb(169, 147, 146);
+    background-color: rgba(255, 255, 255, 0.500);
     border: 0.1em solid rgb(74, 65, 66);
     border-radius: 0.6em;
     margin-bottom: 3em;
@@ -132,7 +132,7 @@
     display: flex;
     width: 80vw;
     font-family: "Roboto", sans-serif;
-    background-color: rgb(169, 147, 146);
+    background-color: rgba(169, 147, 146, 0);
     color:black;
     min-height: auto;
     font-size: 1.3em;
@@ -145,7 +145,7 @@
     display: flex;
     width: 80vw;
     font-family: "Pirata One", system-ui;
-    background-color: rgb(169, 147, 146);
+    background-color: rgba(169, 147, 146, 0);
     color:black;
     font-weight: bold;
     min-height: auto;

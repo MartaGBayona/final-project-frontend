@@ -2,9 +2,12 @@
     min-height: 100vh;
     width: 100vw;  
     margin-top: 3em;
-    background-color: white;
+    background-image:url(../../../img/background.png);
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center;
     color: black;
-
+    background-attachment: fixed;
 
     display: flex;
     flex-direction: column;
@@ -72,7 +75,7 @@
     display: flex;
     font-family: "Roboto", sans-serif;
     border: 0.1em solid rgb(74, 65, 66);
-    background-color: rgb(169, 147, 146);
+    background-color: rgba(255, 255, 255, 0.700);
     padding: 2em; 
     border-radius: 1.5em;
 
