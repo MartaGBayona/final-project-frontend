@@ -266,6 +266,26 @@ export const GetMyInscriptions = async (credentials, studentId) => {
     }
 }
 
+export const DeleteInscription = async (credentials, inscriptionId) => {
+    const options = {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${credentials}`
+        },
+    };
+    try {
+        console.log("estoy en el")
+        const response = await fetch(`${root}insrciptions/${inscriptionId}`, options);
+        const responseData = await response.json();
+
+        return responseData;
+    } catch (error) {
+        console.error("Error en la solicitud DELETE:", error);
+        throw error; 
+    }
+};
+
 
 
 

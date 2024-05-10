@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 import './Profile.css'
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux"
 import { userData } from "../../app/slices/userSlice";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { GetProfile, UpdateProfile, GetMyInscriptions } from '../../services/apiCalls';
+import { GetProfile, UpdateProfile, GetMyInscriptions, DeleteInscription } from '../../services/apiCalls';
 import { updated } from "../../app/slices/userSlice";
 import { validate } from '../../utils/functions';
 import { CInput } from '../../common/CInput/CInput';
@@ -18,7 +19,8 @@ export const Profile = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const rdxUser = useSelector(userData);
-
+    const [loading, setLoading] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
     const [write, setWrite] = useState("disabled");
     const [user, setUser] = useState({
         name: "",
@@ -78,6 +80,25 @@ export const Profile = () => {
             getUserInscriptions();
         }
     }, [rdxUser.credentials, loadedData]);
+
+    const deleteInscriptionHandler = async (inscriptionId) => {
+        setLoading(true);
+        try {
+            console.log("soy las inscripciones antes del await", userInscriptions)
+            const fetched = await DeleteInscription(rdxUser.credentials.token, inscriptionId);
+            if (fetched && fetched.success) {
+                const updatedInscriptions = userInscriptions.filter(inscription => inscription.id !== inscriptionId);
+                setUserInscriptions(updatedInscriptions);
+            } else {
+                setErrorMessage(fetched.message || 'Error deleting course');
+            }
+    
+            setLoading(false);
+        } catch (error) {
+            setErrorMessage("Error deleting course");
+            setLoading(false);
+        }
+    };
 
     useEffect(() => {
         if (!rdxUser.credentials.token) {
@@ -208,11 +229,11 @@ export const Profile = () => {
                         description={<div>{inscription.course.description}</div>}
                         subjects={inscription.course.subjects}
                         isDeletable={true}
-                    // onDelete={() => deletePostHandler(inscription._id)}
+                    onDelete={() => deleteInscriptionHandler(inscription.id)}
                     />
                 ))
             ) : (
-                <div>No hay posts para mostrar.</div>
+                <div>Aún no te has inscrito a ningún curso</div>
             )}
         </div>
     )
