@@ -113,13 +113,12 @@ export const Courses = () => {
     const createNewSubject = async () => {
         try {
             setIsCreating(true);
-            console.log("soy las crendenciales en crear subject", rdxUser.credentials)
-            console.log("soy la subjectData en crear subject", subjectData)
             const response = await CreateSubject(rdxUser.credentials, subjectData, selectedCourse);
             if (response.success) {
                 fetchCourses();
                 setIsCreating(false);
                 setSubjectData({ title: "", description: "" });
+                setSelectedCourse(null);
             } else {
                 setErrorMessage(response.message);
                 setIsCreating(false);
