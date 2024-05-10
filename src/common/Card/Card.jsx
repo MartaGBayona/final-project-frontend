@@ -39,12 +39,12 @@ export const CourseCard = ({ title, description, subjects, handleUpdate, handleD
             >
                 {description}
             </div>
-            <div className="subjectsList">
-                <div>Asignaturas:</div>
+            <div>
+                <div className="titleSubjectDesign">Asignaturas:</div>
                 {subjects.map(subject => (
                     <div key={subject.id}>
-                        <div>{subject.title}</div>
-                        <div>{subject.description}</div>
+                        <div className="subjectsTitleDesign">{subject.title}</div>
+                        <div className="subjectsDesign">{subject.description}</div>
                     </div>
                 ))}
             </div>
