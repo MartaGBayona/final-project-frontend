@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import './Users.css';
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { GetAllUsers, DeleteUser } from '../../services/apiCalls';
 import { useSelector } from "react-redux";
 import { userData } from "../../app/slices/userSlice";
@@ -9,6 +10,7 @@ import { UserAdminCard } from "../../common/Card/Card";
 export const Users = () => {
     const rdxUser = useSelector(userData);
     const [users, setUsers] = useState([]);
+    const navigate = useNavigate();
     const [filteredUsers, setFilteredUsers] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [errorMsg, setErrorMsg] = useState("");
@@ -52,6 +54,12 @@ export const Users = () => {
         );
         setFilteredUsers(filtered);
     };
+
+    useEffect(() => {
+        if (!rdxUser.credentials.token) {
+            navigate("/");
+        }
+    }, [rdxUser.credentials, navigate]);
 
     const displayedUsers = searchTerm.length > 0 ? filteredUsers : users;
 
