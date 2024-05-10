@@ -31,7 +31,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
+    flex-direction: column;
     padding-bottom: 1.5em;
 }
 
@@ -120,4 +120,13 @@
     padding: 0.5em;
     border: none;
     resize: vertical;
+}
+
+.errorMessage {
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: red;
 }

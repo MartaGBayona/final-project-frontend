@@ -10,6 +10,7 @@ export const Courses = () => {
     const rdxUser = useSelector(userData);
     const roleId = rdxUser.credentials.user ? rdxUser.credentials.user.role : null;
     const [courses, setCourses] = useState([]);
+    const [inscriptionMessage, setInscriptionMessage] = useState("");
     const [selectedCourse, setSelectedCourse] = useState(null);
     const [isCreating, setIsCreating] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
@@ -73,17 +74,19 @@ export const Courses = () => {
 
     const deleteCourseHandler = async (courseId) => {
         setLoading(true);
-    
+
+        
+
         try {
             const result = await DeleteCourse(rdxUser.credentials.token, courseId);
-    
+
             if (result && result.success) {
                 const updatedCourses = courses.filter(course => course.id !== courseId);
                 setCourses(updatedCourses);
             } else {
                 setErrorMessage(result.message || 'Error deleting course');
             }
-    
+
             setLoading(false);
         } catch (error) {
             setErrorMessage("Error deleting course");
@@ -97,13 +100,15 @@ export const Courses = () => {
             const response = await PostInscription(rdxUser.credentials, { courseId, student_id: studentId });
             if (response.success) {
                 fetchCourses();
+                setInscriptionMessage("¡Nos vemos en clase!");
             } else {
-                console.error('Error al registrar usuario en el curso:', response.message);
+                throw new Error(response.message || "Error al registrar usuario en el curso");
             }
         } catch (error) {
             console.error('Error al registrar usuario en el curso:', error);
+            setInscriptionMessage("Parece que algo ha ido mal.");
         }
-    };
+    };       
 
     const handleCourseChange = (event) => {
         setSelectedCourse(event.target.value);
@@ -128,7 +133,6 @@ export const Courses = () => {
             setIsCreating(false);
         }
     };
-    
 
     useEffect(() => {
         if (courses.length === 0) {
@@ -136,38 +140,56 @@ export const Courses = () => {
         }
     }, [courses]);
 
+    useEffect(() => {
+        if (inscriptionMessage) {
+            const timer = setTimeout(() => {
+                setInscriptionMessage("");
+            }, 2000);
+    
+            return () => clearTimeout(timer);
+        }
+    }, [inscriptionMessage]);
+
     return (
-        <div className="courseDesign">
-            <div className="subtitleCourseDesign">Nuestros cursos</div>
-            <div className="cardRoster">
-                {courses.length > 0 ? (
-                    <div>
-                        {courses.map((course, index) => {
-                            const courseId = course.id;
-                            return (
-                                <div key={index}>
-                                    <CourseCard
-                                        title={course.title}
-                                        description={course.description}
-                                        subjects={course.subjects}
-                                        handleUpdate={(newData) => handleCourseUpdate(course.id, newData)}
-                                        handleDelete={() => deleteCourseHandler(course.id)}
-                                        userRoleId={roleId === 1 ? roleId : null}
-                                    />
-                                    {rdxUser.credentials.token && ( 
-                                        <div className="registerButtonContainer">
-                                            <button className="registerButtonDesign" onClick={() => registerUserInCourse(courseId)}>
-                                                ¡Apúntate al curso!
-                                            </button>
-                                        </div>
-                                    )}
-                                </div>
-                            );
-                        })}
-                    </div>
-                ) : (
-                    <div>Los cursos están cargando...</div>
-                )}
+        <>
+            <div className="courseDesign">
+                <div className="subtitleCourseDesign">Nuestros cursos</div>
+                <div className="cardRoster">
+                    {courses.length > 0 ? (
+                        <div>
+                            {courses.map((course, index) => {
+                                const courseId = course.id;
+                                return (
+                                    <div key={index}>
+                                        <CourseCard
+                                            title={course.title}
+                                            description={course.description}
+                                            subjects={course.subjects}
+                                            handleUpdate={(newData) => handleCourseUpdate(course.id, newData)}
+                                            handleDelete={() => deleteCourseHandler(course.id)}
+                                            userRoleId={roleId === 1 ? roleId : null}
+                                        />
+                                        {rdxUser.credentials.token && (
+                                            <div className="registerButtonContainer">
+                                                <button className="registerButtonDesign" onClick={() => registerUserInCourse(courseId)}>
+                                                    ¡Apúntate al curso!
+                                                </button>
+                                                {inscriptionMessage && inscriptionMessage.includes("¡Inscripción exitosa!") && (
+                                                    <div className="successMessage">{inscriptionMessage}</div>
+                                                )}
+                                                {inscriptionMessage && !inscriptionMessage.includes("¡Inscripción exitosa!") && (
+                                                    <div className="errorMessage">{inscriptionMessage}</div>
+                                                )}
+                                            </div>
+                                        )}
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    ) : (
+                        <div>Los cursos están cargando...</div>
+                    )}
+                </div>
             </div>
             {roleId === 1 && (
                 <div className="courseCardDesign">
@@ -215,7 +237,8 @@ export const Courses = () => {
                     {errorMessage && <div className="errorMessage">{errorMessage}</div>}
                 </div>
             )}
-        </div>
+        </>
     );
+    
 }
 
