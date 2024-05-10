@@ -148,8 +148,7 @@ export const getCourse = async () => {
     try {
         const response = await fetch(`${root}courses`, options)
         const data = await response.json();
-
-        console.log("soy la data de los cursos", data)
+        
         return data
     } catch (error) {
         return error;
@@ -245,7 +244,6 @@ export const PostInscription = async (credentials, data) => {
 }
 
 export const GetMyInscriptions = async (credentials, studentId) => {
-    console.log("soy el studentId", studentId)
     const options = {
         method: "GET",
         headers: {
@@ -255,9 +253,7 @@ export const GetMyInscriptions = async (credentials, studentId) => {
     };
     try {
         const response = await fetch(`${root}users/${studentId}/inscriptions`, options);
-        console.log("soy la respuesta del getInscriptions", response)
         const data = await response.json();
-        console.log("soy la data de mis inscripciones", data)
         return data;
         
     } catch (error) {
@@ -275,7 +271,6 @@ export const DeleteInscription = async (credentials, inscriptionId) => {
         },
     };
     try {
-        console.log("estoy en el")
         const response = await fetch(`${root}inscriptions/${inscriptionId}`, options);
         const responseData = await response.json();
 
@@ -296,10 +291,8 @@ export const CreateSubject = async (credentials, data, courseId) => {
         body: JSON.stringify(data)
     };
     try {
-        console.log("soy el curso id en crear subject", courseId)
         const response = await fetch(`${root}courses/${courseId}/subjects`, options);
         const responseData = await response.json();
-        console.log("soy response data", responseData)
 
         if (!responseData.success) {
             throw new Error(responseData.message);

@@ -44,9 +44,6 @@ export const Profile = () => {
     const getUserProfile = async (credentials) => {
         try {
             const fetched = await GetProfile(credentials);
-            console.log("Datos del usuario:", fetched.data);
-            console.log("soy las credenciales", credentials.user.name)
-            console.log(rdxUser.credentials.user.role)
             if (!fetched.success) {
                 throw new Error(fetched.message || 'Error en la respuesta del servidor');
             }
@@ -84,7 +81,6 @@ export const Profile = () => {
     const deleteInscriptionHandler = async (inscriptionId) => {
         setLoading(true);
         try {
-            console.log("soy las inscripciones antes del await", userInscriptions)
             const fetched = await DeleteInscription(rdxUser.credentials.token, inscriptionId);
             if (fetched && fetched.success) {
                 const updatedInscriptions = userInscriptions.filter(inscription => inscription.id !== inscriptionId);
@@ -131,7 +127,6 @@ export const Profile = () => {
     const updateData = async () => {
         try {
             const fetched = await UpdateProfile(rdxUser.credentials, user);
-            console.log("modificar perfil", rdxUser.credentials.user)
             setUser((prevState) => ({
                 ...prevState,
                 name: fetched.data.name || prevState.name,
@@ -146,7 +141,6 @@ export const Profile = () => {
             throw error;
         }
     };
-    console.log("Cantidad de inscripciones:", userInscriptions.length)
     return (
         <div className='profileDesign'>
             <div className="titleDesignRegister">
