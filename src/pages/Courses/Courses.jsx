@@ -4,15 +4,20 @@ import { useSelector } from "react-redux";
 import { userData } from "../../app/slices/userSlice";
 import { useState, useEffect } from "react";
 import { CourseCard } from "../../common/Card/Card";
-import { getCourse, UpdateCourse, CreateCourse, DeleteCourse, PostInscription } from "../../services/apiCalls";
+import { getCourse, UpdateCourse, CreateCourse, DeleteCourse, PostInscription, DeleteInscription, CreateSubject } from "../../services/apiCalls";
 
 export const Courses = () => {
     const rdxUser = useSelector(userData);
     const roleId = rdxUser.credentials.user ? rdxUser.credentials.user.role : null;
     const [courses, setCourses] = useState([]);
+    const [selectedCourse, setSelectedCourse] = useState(null);
     const [isCreating, setIsCreating] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const [courseData, setCourseData] = useState({
+        title: "",
+        description: ""
+    });
+    const [subjectData, setSubjectData] = useState({
         title: "",
         description: ""
     });
@@ -100,6 +105,31 @@ export const Courses = () => {
             console.error('Error al registrar usuario en el curso:', error);
         }
     };
+
+    const handleCourseChange = (event) => {
+        setSelectedCourse(event.target.value);
+    };
+
+    const createNewSubject = async () => {
+        try {
+            setIsCreating(true);
+            console.log("soy las crendenciales en crear subject", rdxUser.credentials)
+            console.log("soy la subjectData en crear subject", subjectData)
+            const response = await CreateSubject(rdxUser.credentials, subjectData, selectedCourse);
+            if (response.success) {
+                fetchCourses();
+                setIsCreating(false);
+                setSubjectData({ title: "", description: "" });
+            } else {
+                setErrorMessage(response.message);
+                setIsCreating(false);
+            }
+        } catch (error) {
+            console.error('Error creating subject:', error);
+            setErrorMessage("Error creating subject");
+            setIsCreating(false);
+        }
+    };
     
 
     useEffect(() => {
@@ -159,6 +189,29 @@ export const Courses = () => {
                     <button className="cButtonDesign" onClick={createNewCourse} disabled={isCreating}>
                         {isCreating ? "Creando..." : "Crear curso"}
                     </button>
+                    {errorMessage && <div className="errorMessage">{errorMessage}</div>}
+                </div>
+            )}
+            {roleId === 1 && (
+                <div className="courseCardDesign">
+                    <select value={selectedCourse} onChange={handleCourseChange}>
+                        <option value="">Selecciona un curso</option>
+                        {courses.map(course => (
+                            <option key={course.id} value={course.id}>{course.title}</option>
+                        ))}
+                    </select>
+                    <input
+                        type="text"
+                        placeholder="Título de la asignatura"
+                        value={subjectData.title}
+                        onChange={(e) => setSubjectData({ ...subjectData, title: e.target.value })}
+                    />
+                    <textarea
+                        placeholder="Descripción de la asignatura"
+                        value={subjectData.description}
+                        onChange={(e) => setSubjectData({ ...subjectData, description: e.target.value })}
+                    />
+                    <button onClick={createNewSubject}>Crear asignatura</button>
                     {errorMessage && <div className="errorMessage">{errorMessage}</div>}
                 </div>
             )}

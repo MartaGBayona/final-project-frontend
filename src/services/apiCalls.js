@@ -276,7 +276,7 @@ export const DeleteInscription = async (credentials, inscriptionId) => {
     };
     try {
         console.log("estoy en el")
-        const response = await fetch(`${root}insrciptions/${inscriptionId}`, options);
+        const response = await fetch(`${root}inscriptions/${inscriptionId}`, options);
         const responseData = await response.json();
 
         return responseData;
@@ -285,6 +285,31 @@ export const DeleteInscription = async (credentials, inscriptionId) => {
         throw error; 
     }
 };
+
+export const CreateSubject = async (credentials, data, courseId) => {
+    const options = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${credentials.token}`
+        },
+        body: JSON.stringify(data)
+    };
+    try {
+        console.log("soy el curso id en crear subject", courseId)
+        const response = await fetch(`${root}courses/${courseId}/subjects`, options);
+        const responseData = await response.json();
+        console.log("soy response data", responseData)
+
+        if (!responseData.success) {
+            throw new Error(responseData.message);
+        }
+
+        return responseData;
+    } catch (error) {
+        return { success: false, message: error.message };
+    }
+}
 
 
 
