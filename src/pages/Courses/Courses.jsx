@@ -192,8 +192,8 @@ export const Courses = () => {
                 </div>
             )}
             {roleId === 1 && (
-                <div className="courseCardDesign">
-                    <select value={selectedCourse} onChange={handleCourseChange}>
+                <div className="subjectCardDesign">
+                    <select className="selectDropdown" value={selectedCourse} onChange={handleCourseChange}>
                         <option value="">Selecciona un curso</option>
                         {courses.map(course => (
                             <option key={course.id} value={course.id}>{course.title}</option>
@@ -201,16 +201,18 @@ export const Courses = () => {
                     </select>
                     <input
                         type="text"
+                        className="inputCardDesignSubject"
                         placeholder="Título de la asignatura"
                         value={subjectData.title}
                         onChange={(e) => setSubjectData({ ...subjectData, title: e.target.value })}
                     />
                     <textarea
+                        className="textareaCardDesignSubject"
                         placeholder="Descripción de la asignatura"
                         value={subjectData.description}
                         onChange={(e) => setSubjectData({ ...subjectData, description: e.target.value })}
                     />
-                    <button onClick={createNewSubject}>Crear asignatura</button>
+                    <button className="cButtonDesign" onClick={createNewSubject}>Crear asignatura</button>
                     {errorMessage && <div className="errorMessage">{errorMessage}</div>}
                 </div>
             )}
