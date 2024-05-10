@@ -6,6 +6,7 @@ import './Login.css'
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux"
 import { CButton } from '../../common/CButton/CButton';
+import { validate } from "../../utils/functions"
 
 
 export const Login = () => {
@@ -19,12 +20,12 @@ export const Login = () => {
         password: "",
     });
 
-    // const [userError, setUserError] = useState({
-    //     emailError: "",
-    //     passwordError: "",
-    // });
+    const [userError, setUserError] = useState({
+        emailError: "",
+        passwordError: "",
+    });
 
-    // const [msgError, setMsgError] = useState("");
+    const [msgError, setMsgError] = useState("");
 
     const inputHandler = (e) => {
         setUser((prevState) => ({
@@ -33,14 +34,14 @@ export const Login = () => {
         }));
     };
 
-    // const checkError = (e) => {
-    //     const error = validate(e.target.name, e.target.value);
+    const checkError = (e) => {
+        const error = validate(e.target.name, e.target.value);
 
-    //     setUserError((prevState) => ({
-    //         ...prevState,
-    //         [e.target.name + "Error"]: error
-    //     }))
-    // }
+        setUserError((prevState) => ({
+            ...prevState,
+            [e.target.name + "Error"]: error
+        }))
+    }
 
     const loginMe = async () => {
         try {
@@ -69,13 +70,16 @@ export const Login = () => {
                 };
 
                 dispatch(login({ credentials: passport }));
+                setMsgError(`Bienvenido de nuevo ${userData.name}`);
+                console.log("soy userData", userData)
 
                 setTimeout(() => {
                     navigate("/");
                 }, 2000);
             }
         } catch (error) {
-            console.error(error);
+            setMsgError(error.message);
+
         }
     };
 
@@ -89,23 +93,30 @@ export const Login = () => {
             </div>
             <div className='titleInputDesign'>Correo:</div>
             <CInputLogRegister
+                className={`cInputLogRegisterDesign ${userError.emailError !== "" ? "inputDesignError" : ""}`}
                 type="email"
                 name="email"
                 value={user.email || ""}
                 changeEmit={(e) => inputHandler(e)}
+                onBlurFunction={(e) => checkError(e)}
             />
+            <div className="error">{userError.emailError}</div>
             <div className='titleInputDesign'>Contraseña:</div>
             <CInputLogRegister
+                className={`cInputLogRegisterDesign ${userError.passwordError !== "" ? "inputDesignError" : ""}`}
                 type="password"
                 name="password"
                 value={user.password || ""}
                 changeEmit={(e) => inputHandler(e)}
+                onBlurFunction={(e) => checkError(e)}
             />
+            <div className="error">{userError.passwordError}</div>
             <CButton
                 className={"buttonDesign"}
                 title={"Entrar"}
                 functionEmit={loginMe}
             />
+            <div className="error">{msgError}</div>
             </div>
 
         </div>

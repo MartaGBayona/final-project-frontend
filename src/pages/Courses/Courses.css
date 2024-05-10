@@ -7,7 +7,6 @@
     background-position: center;
     color: black;
     background-attachment: fixed;
-    margin-top: 3em;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -68,8 +67,10 @@
 }
 
 .selectDropdown {
-    min-width: 1vw;
     font-size: medium;
+    width: 30vw;
+    justify-content: center;
+    align-items: center;
     background-color: rgb(100, 64, 62);
     border: 0.1em solid rgb(74, 65, 66);
     font-family: "Roboto", sans-serif;
@@ -79,9 +80,6 @@
 .subjectCardDesign {
     font-family: "Roboto", sans-serif;
     width: 90vw;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 0.5em;
@@ -96,10 +94,10 @@
 }
 
 .inputCardDesignSubject {
-    display: flex;
     width: 83vw;
     height: 3.7vh;
     font-size: 1.5em;
+    justify-content: center;
     font-family: "Roboto", sans-serif;
     background-color: rgba(255, 255, 255, 0.511);
     color:black;
@@ -113,7 +111,6 @@
 .textareaCardDesignSubject {
     width: 83vw;
     min-height: auto;
-    display: flex;
     font-family: "Roboto", sans-serif;
     background-color: rgba(255, 255, 255, 0.511);
     color:black;

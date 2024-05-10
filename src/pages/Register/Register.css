@@ -20,10 +20,9 @@
 }
 
 .leftRegisterDesign {
-    margin-top: 3em;
     width: 70vw;
     min-height: 100vh;
-
+    padding-top: 3em;
     background-image:url(../../../img/posters.png);
     background-size: cover; 
     background-repeat: no-repeat; 
@@ -36,7 +35,7 @@
 }
 
 .rightRegisterDesign {
-    margin-top: 3em;
+    padding-top: 3em;
     width: 30vw;
     min-height: 100vh;
     font-family: "Roboto", sans-serif;

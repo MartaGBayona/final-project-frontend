@@ -1,5 +1,5 @@
 .headerDesign {
-    min-height: 3vw;
+    min-height: 2vw;
     width: 100vw;
 
     background-color:rgb(74, 65, 66);
@@ -12,14 +12,14 @@
 
 
     transition: 0.3s;
-    font-size: 1.3em;
+    font-size: 1em;
 
 
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    margin-bottom: 3em;
+    margin-bottom: 2em;
     transition: 0.3s;
 
 }

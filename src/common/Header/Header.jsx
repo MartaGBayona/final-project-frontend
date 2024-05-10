@@ -9,7 +9,7 @@ export const Header = () => {
 
     return (
         <div className="headerDesign">
-            <Clink path="/" title="Gorgoneye" />
+            <Clink path="/" title="Home" />
             <Clink path="/courses" title="Formación" />
             {rdxUser?.credentials?.token ? (
                 <div className="navigatorDesign">

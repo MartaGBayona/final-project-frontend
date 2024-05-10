@@ -70,3 +70,7 @@
         font-size: 2em;
     }
 }
+
+.inputDesignError {
+    border: 0.2em solid rgb(196, 32, 33);
+}
