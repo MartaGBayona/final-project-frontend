@@ -4,14 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { userData, logout } from "../../app/slices/userSlice";
 
 export const Header = () => {
-
     const rdxUser = useSelector(userData);
-
     const dispatch = useDispatch();
 
     return (
         <div className="headerDesign">
-            <Clink path="/" title="Home" />
+            <Clink path="/" title="Gorgoneye" />
             <Clink path="/courses" title="Formación" />
             {rdxUser?.credentials?.token ? (
                 <div className="navigatorDesign">
