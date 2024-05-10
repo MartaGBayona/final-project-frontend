@@ -40,7 +40,6 @@ export const CourseCard = ({ title, description, subjects, handleUpdate, handleD
                 {description}
             </div>
             <div>
-                <div className="titleSubjectDesign">Asignaturas:</div>
                 {subjects.map(subject => (
                     <div key={subject.id}>
                         <div className="subjectsTitleDesign">{subject.title}</div>
@@ -93,14 +92,13 @@ export const InscriptionCard = ({title, description, subjects, isDeletable, onDe
     return (
         <div className="inscriptionCard">
             <div className="inscriptionData">
-                <div>Titulo: {title}</div>
-                <div>Descripción: {description}</div>
-                <div>Asignaturas:</div>
+                <div className="titleCourseDesign">{title}</div>
+                <div className="descriptionCourseDesign">{description}</div>
                 <div>
                     {subjects.map(subject => (
                         <div key={subject.id}>
-                            <div>{subject.title}</div>
-                            <div>{subject.description}</div>
+                            <div className="subjectsTitleDesign">{subject.title}</div>
+                            <div className="subjectsDesign">{subject.description}</div>
                         </div>
                     ))}
                 </div>

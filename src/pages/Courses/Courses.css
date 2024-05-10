@@ -64,7 +64,7 @@
 }
 
 .selectDropdown {
-    min-width: 10vw;
+    min-width: 1vw;
     font-size: medium;
     background-color: rgb(100, 64, 62);
     border: 0.1em solid rgb(74, 65, 66);

@@ -143,7 +143,7 @@ export const Profile = () => {
     };
     return (
         <div className='profileDesign'>
-            <div className="titleDesignRegister">
+            <div className="titleDesignProfile">
                 Mi perfil
             </div>
             <CInput

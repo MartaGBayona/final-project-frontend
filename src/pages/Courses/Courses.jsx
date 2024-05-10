@@ -34,7 +34,6 @@ export const Courses = () => {
 
 
     const handleCourseUpdate = async (courseId, newData) => {
-        console.log('ID del curso:', courseId);
         try {
             if (roleId === 1) {
                 const updatedCourse = await UpdateCourse(rdxUser.credentials, newData, courseId);
