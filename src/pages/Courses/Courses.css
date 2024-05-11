@@ -1,15 +1,16 @@
 .courseDesign {
     min-height: 100vh;
-    width: 100vw;
+    width: 100vw;  
     background-image:url(../../../img/background.png);
     background-size: cover; 
     background-repeat: no-repeat; 
     background-position: center;
     color: black;
     background-attachment: fixed;
+
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -99,7 +100,7 @@
     font-size: 1.5em;
     justify-content: center;
     font-family: "Roboto", sans-serif;
-    background-color: rgba(255, 255, 255, 0.511);
+    background-color: rgba(255, 255, 255, 0.500);
     color:black;
     font-weight: bold;
     border-radius: 0.2em;

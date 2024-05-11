@@ -15,6 +15,16 @@
 ---
 
 ## Description :classical_building:
+Gorgoneye Cinema Academy is an online platform dedicated to providing free courses in the realm of film studies. Aspiring filmmakers and cinephiles alike can delve into a variety of courses covering topics such as the history of cinema and cinematographic techniques. Our platform aims to democratize access to film education, fostering a community where users can enhance their understanding of the art and craft of filmmaking from anywhere in the world.
+
+Features:
+- Free Courses: Gain access to a diverse range of courses without any cost barrier.
+- User Registration: Register and create an account to enroll in courses and track your progress.
+- History of Cinema: Explore the evolution of cinema through comprehensive historical lessons.
+- Cinematographic Techniques: Learn the fundamentals and advanced techniques used in filmmaking.
+- Interactive Learning: Engage with interactive content and multimedia resources to enhance your learning experience.
+- Community Interaction: Connect with fellow film enthusiasts, share insights, and collaborate on projects.
+- Accessible Anywhere, Anytime: Access courses and resources from the comfort of your home, on your schedule.
 
 ---
 
@@ -72,7 +82,7 @@ npm run dev
 
 ## Author :wave:
 
-
+[GitHub](https://github.com/MartaGBayona) - [LinkedIn](https://www.linkedin.com/in/martagbayona/)
 
 ---
 
